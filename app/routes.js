@@ -1,7 +1,7 @@
 import express from 'express'
-import { exampleWizardRoutes } from './routes/example-wizard.js'
+import { consentRoutes } from './routes/consent.js'
 
 const router = express.Router()
-exampleWizardRoutes(router)
+consentRoutes(router)
 
 export default router

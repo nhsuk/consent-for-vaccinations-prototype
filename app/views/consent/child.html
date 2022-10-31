@@ -1,0 +1,27 @@
+{% extends "layouts/wizard.html" %}
+{% set title = "Child details" %}
+
+{% block form %}
+  <h1 class="nhsuk-heading-l">{{ title }}</h1>
+
+  {{ input({
+    label: {
+      classes: "nhsuk-label--m",
+      text: "Name"
+    },
+    decorate: "child.name"
+  }) }}
+
+  {{ dateInput({
+    fieldset: {
+      legend: {
+        classes: "nhsuk-fieldset__legend--m",
+        text: "Date of birth"
+      }
+    },
+    hint: {
+      text: "For example, 27 3 2017"
+    },
+    decorate: "child.dob"
+  }) }}
+{% endblock %}
