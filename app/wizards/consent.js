@@ -3,12 +3,23 @@ import { wizard } from 'nhsuk-prototype-rig'
 export function consentWizard (req) {
   const journey = {
     '/start': {},
-    '/consent/vaccination': {},
     '/consent/school': {},
-    '/consent/child': {},
     '/consent/parent-guardian': {},
-    '/consent/consent': {},
-    '/consent/history': {},
+    '/consent/child': {},
+    '/consent/child-dob': {},
+    '/consent/child-nhs': {},
+    '/consent/consent': {
+      '/consent/no-consent-given': {
+        data: 'consent',
+        value: 'No'
+      }
+    },
+    '/consent/health-questions': {},
+    '/consent/health-immune-system': {},
+    '/consent/health-household-immune-system': {},
+    '/consent/health-asthma': {},
+    '/consent/health-allergy': {},
+    '/consent/health-aspirin': {},
     '/consent/check-answers': {},
     '/consent/confirmation': {},
     '/': {}

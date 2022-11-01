@@ -1,0 +1,23 @@
+{% extends "layouts/wizard.html" %}
+{% set title = "Do you agree to them having a flu vaccination?" %}
+
+{% block form %}
+  {{ radios({
+    fieldset: {
+      legend: {
+        classes: "nhsuk-fieldset__legend--l nhsuk-u-margin-bottom-6",
+        text: title,
+        isPageHeading: true
+      }
+    },
+    items: [
+      {
+        text: 'Yes, I agree'
+      },
+      {
+        text: 'No'
+      }
+    ],
+    decorate: "consent"
+  }) }}
+{% endblock %}

@@ -1,0 +1,53 @@
+{% extends "layouts/wizard.html" %}
+{% set title = "Do you know their NHS number?" %}
+
+{% block form %}
+  {% set nhsNumberHtml %}
+    {{ input({
+      label: {
+        text: "NHS number"
+      },
+      decorate: "child.nhs-number"
+    }) }}
+  {% endset %}
+
+  {% set hint %}
+  <p>An NHS number is a 10 digit number, like 485 777 3456.</p>
+  <p>You can find it:</p>
+  <ul class="nhsuk-list nhsuk-list--bullet">
+    <li>in their personal child health record (red book)</li>
+    <li>using the <a href="#">Find your NHS number service</a></li>
+    <li>on any letter from the NHS like a prescription or appointment&nbsp;letter</li>
+    <li>by calling your GP surgery and asking them for the number</li>
+    <li>by logging in to a GP practice online service</li>
+  </ul>
+  {% endset %}
+
+  {{ radios({
+    fieldset: {
+      legend: {
+        classes: "nhsuk-fieldset__legend--l nhsuk-u-margin-bottom-6",
+        text: title,
+        isPageHeading: true
+      }
+    },
+    hint: {
+      html: hint
+    },
+    items: [
+      {
+        text: 'Yes, I know their NHS number',
+        hint: {
+
+        },
+        conditional: {
+          html: nhsNumberHtml
+        }
+      },
+      {
+        text: 'No'
+      }
+    ],
+    decorate: "child.dob"
+  }) }}
+{% endblock %}

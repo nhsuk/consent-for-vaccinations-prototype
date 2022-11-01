@@ -1,27 +1,59 @@
 {% extends "layouts/wizard.html" %}
-{% set title = "Child details" %}
+{% set title = "About your child" %}
 
 {% block form %}
   <h1 class="nhsuk-heading-l">{{ title }}</h1>
 
   {{ input({
     label: {
-      classes: "nhsuk-label--m",
       text: "Name"
     },
     decorate: "child.name"
   }) }}
 
-  {{ dateInput({
+  {% set otherNameHtml %}
+    {{ input({
+      label: {
+        text: "Preferred name"
+      },
+      decorate: "child.preferred-name"
+    }) }}
+  {% endset %}
+
+  {{ radios({
     fieldset: {
       legend: {
-        classes: "nhsuk-fieldset__legend--m",
-        text: "Date of birth"
+        text: "Do they have a preferred name?"
       }
     },
-    hint: {
-      text: "For example, 27 3 2017"
+    items: [
+      {
+        text: 'Yes',
+        conditional: {
+          html: otherNameHtml
+        }
+      },
+      {
+        text: 'No'
+      }
+    ],
+    decorate: "child.preferred-name"
+  }) }}
+
+  {{ radios({
+    fieldset: {
+      legend: {
+        text: "Sex"
+      }
     },
-    decorate: "child.dob"
+    items: [
+      {
+        text: 'Female'
+      },
+      {
+        text: 'Male'
+      }
+    ],
+    decorate: "child.sex"
   }) }}
 {% endblock %}

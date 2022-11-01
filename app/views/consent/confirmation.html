@@ -1,0 +1,62 @@
+{% extends "layouts/wizard.html" %}
+{% set name = d('child.name') or 'Bobby Doe' %}
+{% set title = name + " will get a nasal flu vaccination at school" %}
+{% set hideButton = true %}
+{% block pageNavigation %}{% endblock %}
+
+{% block form %}
+  <h1 class="nhsuk-heading-l">{{ title }}</h1>
+
+  <p>We’ve sent a confirmation to jane.doe@example.com.</p>
+
+  <h2 class="nhsuk-heading-m">Vaccination details</h2>
+
+  {{ summaryList({
+    rows: [
+      {
+        key: { text: "Date" },
+        value: { text: "Tuesday 21 November 2022" }
+      },
+      {
+        key: { text: "Location" },
+        value: { text: "St Mary’s Primary School" }
+      },
+      {
+        key: { text: "Vaccine" },
+        value: { text: "Nasal flu vaccination" }
+      }
+    ]
+  }) }}
+
+  <h2 class="nhsuk-heading-s">If anything changes</h2>
+
+  <p>[TODO] Contact the immunisation team</p>
+
+  <hr class="nhsuk-section-break nhsuk-section-break--l nhsuk-section-break--visible">
+
+  {{ radios({
+    fieldset: {
+      legend: {
+        classes: "nhsuk-fieldset__legend--m",
+        text: "Do you need to give consent for another child?"
+      }
+    },
+    items: [
+      {
+        text: 'Yes'
+      },
+      {
+        text: 'No'
+      },
+      {
+        text: 'I don’t know'
+      }
+    ],
+    decorate: "consent"
+  }) }}
+
+  {{ button({
+    text: 'Continue'
+  }) }}
+
+{% endblock %}

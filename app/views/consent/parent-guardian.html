@@ -1,0 +1,42 @@
+{% extends "layouts/wizard.html" %}
+{% set title = "About you" %}
+
+{% block form %}
+  <h1 class="nhsuk-heading-l">{{ title }}</h1>
+
+  {{ input({
+    label: {
+      text: "Your name"
+    },
+    decorate: "parent.name"
+  }) }}
+
+  {{ radios({
+    fieldset: {
+      legend: {
+        text: "Your relationship to the child"
+      }
+    },
+    items: [
+      { text: 'Parent' },
+      { text: 'Guardian' },
+      { text: 'Carer' },
+      { text: 'Other' }
+    ],
+    decorate: "parent.relationship"
+  }) }}
+
+  {{ input({
+    label: {
+      text: "Telephone number"
+    },
+    decorate: "parent.telephone"
+  }) }}
+
+  {{ input({
+    label: {
+      text: "Email address"
+    },
+    decorate: "parent.email"
+  }) }}
+{% endblock %}

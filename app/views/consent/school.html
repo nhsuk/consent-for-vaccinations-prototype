@@ -1,0 +1,30 @@
+{% extends "layouts/wizard.html" %}
+{% set title = "Confirm your child’s school" %}
+
+{% block form %}
+  <h1 class="nhsuk-heading-l">{{ title }}</h1>
+
+  {% set html %}
+    <p>
+      <span class="nhsuk-heading-m nhsuk-u-margin-bottom-0">St Mary’s Primary School</span>
+      BN1 1AA
+    </p>
+  {% endset %}
+
+  {{ insetText({
+    HTML: html
+  }) }}
+
+  {{ radios({
+    fieldset: {
+      legend: {
+        text: "Is this school correct?"
+      }
+    },
+    items: [
+      { text: 'Yes' },
+      { text: 'No, I need to pick a different school' }
+    ],
+    decorate: "child.school"
+  }) }}
+{% endblock %}

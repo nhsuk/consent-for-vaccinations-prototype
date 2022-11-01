@@ -1,0 +1,36 @@
+{% extends "layouts/wizard.html" %}
+{% set title = "Does your child have a disease or treatment that severely affects their immune system?" %}
+
+{% block form %}
+  {% set html %}
+    {{ textarea({
+      label: {
+        text: "Give details"
+      },
+      decorate: "health.immune-system-details"
+    }) }}
+  {% endset %}
+
+  {{ radios({
+    fieldset: {
+      legend: {
+        classes: "nhsuk-fieldset__legend--l",
+        text: title,
+        isPageHeading: true
+      }
+    },
+    hint: {
+      text: 'For example, treatment for leukaemia'
+    },
+    items: [
+      {
+        text: 'Yes',
+        conditional: {
+          html: html
+        }
+      },
+      { text: 'No' }
+    ],
+    decorate: "health.immune-system"
+  }) }}
+{% endblock %}
