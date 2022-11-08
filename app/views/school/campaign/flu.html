@@ -1,0 +1,60 @@
+{% extends "layouts/default.html" %}
+{% set title = "Flu vaccine" %}
+
+{% block beforeContent %}
+  {{ breadcrumb({
+    text: "Current campaigns",
+    href: "/school/campaigns"
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+      <h1 class="nhsuk-heading-xl">
+        <span class="nhsuk-caption-xl">22 November 2022</span>
+        {{ title }}
+      </h1>
+
+      <p>East Sussex SAIS team are running a flu vaccine clinic at your school on 24 November 2022.</p>
+
+      <p>You need to send a consent request for each eligible child. This might be by email, text message or paper form.</p>
+
+      {{ button({
+        classes: 'nhsuk-u-margin-top-4',
+        text: 'Start now'
+      }) }}
+
+      <!-- <table class="nhsuk-table">
+        <caption class="nhsuk-table__caption">Children eligible for vaccine</caption>
+        <thead role="rowgroup" class="nhsuk-table__head">
+          <tr role="row">
+            <th role="columnheader" class="" scope="col">
+              Child
+            </th>
+            <th role="columnheader" class="" scope="col">
+              Year group
+            </th>
+            <th role="columnheader" class="" scope="col">
+              Contact details
+            </th>
+          </tr>
+        </thead>
+        <tbody class="nhsuk-table__body">
+          {% for i in range(0, 10) -%}
+          <tr role="row">
+            <td>
+              Bobby Doe
+            </td>
+            <td>
+              Reception
+            </td>
+            <td>
+              jane.doe@example.com
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table> -->
+  </div>
+{% endblock %}

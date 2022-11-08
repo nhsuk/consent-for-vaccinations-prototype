@@ -1,0 +1,25 @@
+{% extends "layouts/default.html" %}
+{% set title = "Send consent requests for vaccinations" %}
+
+{% block main %}
+  <div class="nhsuk-width-container">
+    <main class="nhsuk-main-wrapper" id="main-content" role="main">
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-two-thirds">
+          <h1 class="nhsuk-heading-xl">{{ title }}</h1>
+
+          <p>Use this service to:</p>
+          <ul class="nhsuk-list nhsuk-list--bullet nhsuk-u-margin-bottom-6">
+            <li>send vaccination consent requests to parents</li>
+            <li>send reminders to parents who have not responded</li>
+            <li>view uptake for vaccination consent</li>
+          </ul>
+
+          {{ button({
+            text: 'Start now',
+            href: '/school/sign-in'
+          }) }}
+      </div>
+    </main>
+  </div>
+{% endblock %}

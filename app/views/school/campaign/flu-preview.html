@@ -1,0 +1,79 @@
+{% extends "layouts/default.html" %}
+{% set title = "Preview and send the flu vaccine consent request" %}
+
+{% block beforeContent %}
+  {{ breadcrumb({
+    items: [
+      {
+        text: "Current campaigns",
+        href: "/school/campaigns"
+      }
+    ],
+    text: "Flu",
+    href: "/school/campaign/flu"
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+      <h1 class="nhsuk-heading-xl">
+        <span class="nhsuk-caption-xl">22 November 2022</span>
+        {{ title }}
+      </h1>
+    </div>
+  </div>
+
+  {% set html %}
+    <div class="govuk-grid-row nhsuk-u-margin-top-6">
+      <div class="govuk-grid-column-two-thirds">
+        <p>
+          A local health team are coming to <b>St Mary’s Primary School</b> on Tuesday 22 November 2022 to give flu vaccines.
+        </p>
+
+        <h2 class="nhsuk-heading-m">Please give or refuse consent</h2>
+
+        <p>If you want your child to receive this vaccine at school, you need to give consent by 20 November 2022 (2 days before the vaccination).</p>
+
+        <p>
+          <a href="/start">Give or refuse consent for the flu vaccination</a>
+        </p>
+
+        <h2 class="nhsuk-heading-m">About the flu vaccine</h2>
+
+        <p>The vaccination is given as a painless spray into each nostril. It is safe and effective in helping to protect children against flu.</p>
+
+        <p>Flu is caused by the influenza virus, which children can catch and spread easily. It can lead to serious problems, such as bronchitis and pneumonia.</p>
+
+        <p>Vaccinating children also protects others who are vulnerable to flu, such as babies and older people.</p>
+
+        <p>The vaccine is offered annually. This academic year, it will be offered to children in all year groups from Reception through to Year 6.</p>
+
+        <p>
+          <a href="https://www.nhs.uk/conditions/vaccinations/child-flu-vaccine/">Find out more about the flu vaccine on NHS.UK</a>
+        </p>
+
+        <h2 class="nhsuk-heading-m">Contact the local health team</h2>
+
+        <p>
+          Speak to a member of the local health team by calling 01234 321456, or email example@nhs.uk.
+        </p>
+      </div>
+    </div>
+  {% endset %}
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-full">
+      {{ button({
+        text: 'Send consent requests'
+      }) }}
+
+      <h2 class="nhsuk-heading-m">Preview</h2>
+      {{ card({
+        "heading": "Subject: Flu vaccination on 22 November",
+        "headingLevel": "2",
+        "descriptionHtml": html
+      }) }}
+    </div>
+  </div>
+{% endblock %}

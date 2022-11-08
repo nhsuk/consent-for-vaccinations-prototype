@@ -1,0 +1,76 @@
+{% extends "layouts/default.html" %}
+{% set title = "School vaccination campaigns" %}
+
+{% block main %}
+  <div class="nhsuk-width-container">
+    <main class="nhsuk-main-wrapper" id="main-content" role="main">
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-full">
+          <h1 class="nhsuk-heading-xl">{{ title }}</h1>
+
+          <table class="nhsuk-table">
+            <!-- <caption class="nhsuk-table__caption">Children eligible for vaccine</caption> -->
+            <thead role="rowgroup" class="nhsuk-table__head">
+              <tr role="row">
+                <th role="columnheader" scope="col">
+                  School
+                </th>
+                <th role="columnheader" scope="col">
+                  Vaccine
+                </th>
+                <th role="columnheader" scope="col">
+                  Session date
+                </th>
+                <th role="columnheader" scope="col">
+                  Consent rate
+                </th>
+              </tr>
+            </thead>
+            <tbody class="nhsuk-table__body">
+              <tr role="row">
+                <td>
+                  <a href="#">St Mary’s Primary School</a><br>
+                  Reception to Year 6
+                </td>
+                <td>
+                  Flu vaccine
+                </td>
+                <td>
+                  22 November
+                </td>
+                <td>
+                  32%
+                </td>
+              </tr>
+              <tr role="row">
+                <td>
+                  <a href="#">JVU Academy</a><br>
+                  Year 9
+                </td>
+                <td>
+                  HPV vaccine
+                </td>
+                <td>
+                  1 December
+                </td>
+                <td>
+                  12%
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          {{ button({
+            text: 'Add school campaign',
+            classes: 'nhsuk-button--secondary',
+            href: '#'
+          }) }}
+
+          <p>
+            <a href="#">View previous campaigns</a>
+          </p>
+        </div>
+      </div>
+    </main>
+  </div>
+{% endblock %}

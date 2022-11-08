@@ -7,6 +7,7 @@ export function consentWizard (req) {
     '/consent/parent-guardian': {},
     '/consent/child': {},
     '/consent/child-dob': {},
+    '/consent/child-gp': {},
     '/consent/child-nhs': {},
     '/consent/consent': {
       '/consent/no-consent-given': {

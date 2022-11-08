@@ -1,0 +1,39 @@
+{% extends "layouts/wizard.html" %}
+{% set title = "Are they registered with a GP?" %}
+
+{% block form %}
+  {% set html %}
+    {{ input({
+      label: {
+        classes: "nhsuk-label--s nhsuk-u-margin-bottom-1",
+        text: "What is the name of their GP surgery?"
+      },
+      decorate: "child.gp"
+    }) }}
+  {% endset %}
+
+  {{ radios({
+    fieldset: {
+      legend: {
+        classes: "nhsuk-fieldset__legend--l nhsuk-u-margin-bottom-6",
+        text: title,
+        isPageHeading: true
+      }
+    },
+    items: [
+      {
+        text: 'Yes, they are registered with a GP',
+        conditional: {
+          html: html
+        }
+      },
+      {
+        text: 'No, they are not registered with a GP'
+      },
+      {
+        text: 'I don’t know'
+      }
+    ],
+    decorate: "child.dob"
+  }) }}
+{% endblock %}

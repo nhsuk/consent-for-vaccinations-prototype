@@ -8,7 +8,7 @@
     "node": ">=16.0.0"
   },
   "prototype": {
-    "serviceName": "Give consent for a vaccination",
+    "serviceName": "Give or refuse consent for a vaccination",
     "defaultRigLayout": "layouts/default.html"
   },
   "stylelint": {
