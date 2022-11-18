@@ -19,7 +19,7 @@ export function consentWizard (req) {
     '/consent/health-immune-system': {},
     '/consent/health-household-immune-system': {},
     '/consent/health-asthma': {},
-    '/consent/health-allergy': {},
+    '/consent/health-egg-allergy': {},
     '/consent/health-aspirin': {},
     '/consent/check-answers': {},
     '/consent/confirmation': {},

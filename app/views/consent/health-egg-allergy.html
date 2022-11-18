@@ -1,5 +1,5 @@
 {% extends "layouts/wizard.html" %}
-{% set title = "Does your child have any severe allergies that have led to an anaphylactic reaction?" %}
+{% set title = "Does your child have a severe egg allergy?" %}
 
 {% block form %}
   {% set html %}
@@ -7,7 +7,7 @@
       label: {
         text: "Give details"
       },
-      decorate: "health.allergy-details"
+      decorate: "health.egg-allergy-details"
     }) }}
   {% endset %}
 
@@ -28,6 +28,6 @@
       },
       { text: 'No' }
     ],
-    decorate: "health.allergy"
+    decorate: "health.egg-allergy"
   }) }}
 {% endblock %}

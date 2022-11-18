@@ -6,8 +6,14 @@
 
   {% set html %}
     <p>
-      <span class="nhsuk-heading-m nhsuk-u-margin-bottom-0">St Mary’s Primary School</span>
-      BN1 1AA
+      <span class="nhsuk-heading-m nhsuk-u-margin-bottom-0">
+        {% if secondary %}
+          Hele’s Secondary School
+        {% else %}
+          St Mary’s Primary School
+        {% endif %}
+      </span>
+      PL1 1AA
     </p>
   {% endset %}
 

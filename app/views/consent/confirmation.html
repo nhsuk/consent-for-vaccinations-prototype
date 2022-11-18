@@ -1,6 +1,14 @@
 {% extends "layouts/wizard.html" %}
 {% set name = d('child.name') or 'Bobby Doe' %}
-{% set title = name + " will get a nasal flu vaccination at school" %}
+
+{% set title %}
+  {% if vaccine == "HPV" %}
+    {{ name }} will get the HPV vaccination at school
+  {% else %}
+    {{ name }} will get a nasal flu vaccination at school
+  {% endif %}
+{% endset %}
+
 {% set hideButton = true %}
 {% block pageNavigation %}{% endblock %}
 
@@ -12,21 +20,32 @@
   <h2 class="nhsuk-heading-m">Vaccination details</h2>
 
   {{ summaryList({
-    rows: [
+    rows: decorateRows([
       {
         key: { text: "Date" },
         value: { text: "Tuesday 21 November 2022" }
       },
       {
         key: { text: "Location" },
+        value: { text: "Hele’s Secondary School" }
+      } if secondary else {
+        key: { text: "Location" },
         value: { text: "St Mary’s Primary School" }
       },
       {
         key: { text: "Vaccine" },
         value: { text: "Nasal flu vaccination" }
-      }
-    ]
+      } if vaccine == 'flu',
+      {
+        key: { text: "Vaccine" },
+        value: { text: "HPV vaccination (1st dose)" }
+      } if vaccine == 'HPV'
+    ])
   }) }}
+
+  {% if vaccine == 'HPV' %}
+    <p>We’ll let you know when the 2nd dose will be given.</p>
+  {% endif %}
 
   <h2 class="nhsuk-heading-s">If anything changes</h2>
 

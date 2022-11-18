@@ -5,6 +5,7 @@ export const consentRoutes = router => {
     '/consent',
     '/consent/:view'
   ], (req, res, next) => {
+    res.locals.vaccine = 'flu'
     res.locals.paths = consentWizard(req)
     next()
   })
