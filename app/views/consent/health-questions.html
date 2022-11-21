@@ -6,6 +6,10 @@
   <p>Answering these questions will help us keep your child safe.</p>
 
   <p>
-    If anything changes, or if your child receives their {{ vaccine }} vaccine elsewhere, you must tell us as soon as possible.
+    {% if vaccine == "DPT" %}
+      If anything changes, or if your child receives their vaccine elsewhere, you must tell us as soon as possible.
+    {% else %}
+      If anything changes, or if your child receives their {{ vaccine }} vaccine elsewhere, you must tell us as soon as possible.
+    {% endif %}
   </p>
 {% endblock %}

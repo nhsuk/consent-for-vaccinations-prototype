@@ -1,0 +1,33 @@
+{% extends "layouts/wizard.html" %}
+{% set title = "Does your child take any immunosuppressant medication?" %}
+
+{% block form %}
+  {% set html %}
+    {{ textarea({
+      label: {
+        text: "Give details"
+      },
+      decorate: "health.immunosuppressant-medication-details"
+    }) }}
+  {% endset %}
+
+  {{ radios({
+    fieldset: {
+      legend: {
+        classes: "nhsuk-fieldset__legend--l",
+        text: title,
+        isPageHeading: true
+      }
+    },
+    items: [
+      {
+        text: 'Yes',
+        conditional: {
+          html: html
+        }
+      },
+      { text: 'No' }
+    ],
+    decorate: "health.immunosuppressant-medication"
+  }) }}
+{% endblock %}

@@ -3,11 +3,9 @@
 
 {% set title %}
   {% if vaccine == "HPV" %}
-    Your child will get the HPV vaccination at school
-  {% elseif vaccine == "DPT" %}
-    Your child will get the 3-in-1 teenage booster and MenACWY vaccinations at school
+    {{ name }} will get the HPV vaccination at school
   {% else %}
-    Your child will get a nasal flu vaccination at school
+    {{ name }} will get a nasal flu vaccination at school
   {% endif %}
 {% endset %}
 
@@ -15,22 +13,14 @@
 {% block pageNavigation %}{% endblock %}
 
 {% block form %}
-  <h1 class="{% if vaccine == 'DPT' %}nhsuk-heading-l{% else %}nhsuk-heading-xl{% endif %}">{{ title }}</h1>
+  <h1 class="nhsuk-heading-xl">{{ title }}</h1>
 
   <p>We’ve sent a confirmation to jane.doe@example.com.</p>
 
-  {% if vaccine == "DPT" %}
-    <h2 class="nhsuk-heading-m">Vaccination details</h2>
-  {% else %}
-    <h2 class="nhsuk-heading-m">{{ vaccine | capitaliseFirstLetter }} vaccination</h2>
-  {% endif %}
+  <h2 class="nhsuk-heading-m">{{ vaccine | capitaliseFirstLetter }} vaccination</h2>
 
   {{ summaryList({
     rows: decorateRows([
-      {
-        key: { text: "Child" },
-        value: { text: name }
-      },
       {
         key: { text: "Date" },
         value: { text: "Tuesday 21 November 2022" }
@@ -49,11 +39,7 @@
       {
         key: { text: "Vaccine" },
         value: { text: "HPV vaccination (1st dose)" }
-      } if vaccine == 'HPV',
-      {
-        key: { text: "Vaccines" },
-        value: { html: "3-in-1 teenage booster<br >MenACWY vaccination" }
-      } if vaccine == 'DPT'
+      } if vaccine == 'HPV'
     ])
   }) }}
 

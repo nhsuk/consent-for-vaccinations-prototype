@@ -1,0 +1,31 @@
+{% extends "layouts/default.html" %}
+{% set title = "Give or refuse consent for the 3-in-1 teenage booster and MenACWY vaccine" %}
+
+{% block main %}
+  <div class="nhsuk-width-container">
+    <main class="nhsuk-main-wrapper" id="main-content" role="main">
+      <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-two-thirds">
+          <h1 class="nhsuk-heading-xl">{{ title }}</h1>
+
+          <p>The 3-in-1 teenage booster, also known as the Td/IPV vaccine, boosts protection against 3 diseases: tetanus, diptheria and polio.</p>
+
+          <p>It’s normally given at the same time as the MenACWY vaccine to prevent meningitis and septicaemia.</p>
+
+          <p class="nhsuk-u-margin-bottom-6">Both vaccines are offered to all young people aged 13 to 15 (in school Years 9 and 10). They’re given as injections into the upper arm.</p>
+
+          {{ button({
+            text: 'Start now',
+            href: paths.next
+          }) }}
+
+          <h2 class="nhsuk-heading-m nhsuk-u-margin-top-4">Use this service in another language</h2>
+
+          <p>
+            <a href="#">Change language (English)</a>
+          </p>
+        </div>
+      </div>
+    </main>
+  </div>
+{% endblock %}
