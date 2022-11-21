@@ -13,11 +13,11 @@
 {% block pageNavigation %}{% endblock %}
 
 {% block form %}
-  <h1 class="nhsuk-heading-l">{{ title }}</h1>
+  <h1 class="nhsuk-heading-xl">{{ title }}</h1>
 
   <p>We’ve sent a confirmation to jane.doe@example.com.</p>
 
-  <h2 class="nhsuk-heading-m">Vaccination details</h2>
+  <h2 class="nhsuk-heading-m">{{ vaccine | capitaliseFirstLetter }} vaccination</h2>
 
   {{ summaryList({
     rows: decorateRows([
@@ -45,6 +45,12 @@
 
   {% if vaccine == 'HPV' %}
     <p>We’ll let you know when the 2nd dose will be given.</p>
+  {% endif %}
+
+  {% if d('health.mmr-consent') === 'Yes' %}
+    <h2 class="nhsuk-heading-m">MMR catch-up</h2>
+
+    <p>We’ll contact you to arrange an appointment at a catch-up clinic.</p>
   {% endif %}
 
   <h2 class="nhsuk-heading-s">If anything changes</h2>

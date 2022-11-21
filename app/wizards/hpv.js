@@ -20,6 +20,14 @@ export function hpvWizard (req) {
     '/hpv/consent/health-existing-conditions': {},
     '/hpv/consent/health-regular-medication': {},
     '/hpv/consent/health-anything-else': {},
+    '/hpv/consent/health-questions-mmr': {},
+    '/hpv/consent/health-mmr': {
+      '/hpv/check-answers': {
+        data: 'health.had-mmr',
+        excludedValue: 'No'
+      }
+    },
+    '/hpv/consent/mmr-consent': {},
     '/hpv/check-answers': {},
     '/hpv/consent/confirmation': {},
     '/': {}
