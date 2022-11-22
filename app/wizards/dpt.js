@@ -1,6 +1,9 @@
 import { wizard } from 'nhsuk-prototype-rig'
 
 export function dptWizard (req) {
+  const data = req.session.data
+  const noConsent = data['3-in-1-consent'] === 'No' && data['men-acwy-consent'] === 'No'
+
   const journey = {
     '/dpt/start': {},
     '/dpt/consent/school': {},
@@ -10,16 +13,20 @@ export function dptWizard (req) {
     '/dpt/consent/child-gp': {},
     '/dpt/consent/child-nhs': {},
     '/dpt/3-in-1-consent': {
-      '/dpt/3-in-1-no-consent-given': {
+      '/dpt/men-acwy-consent': {
         data: '3-in-1-consent',
-        value: 'No'
+        excludedValue: 'No'
       }
     },
+    '/dpt/3-in-1-no-consent-given': {},
     '/dpt/men-acwy-consent': {
-      '/dpt/consent/no-consent-given': {
-        data: 'consent',
-        value: 'No'
+      '/dpt/consent/health-questions': {
+        data: 'men-acwy-consent',
+        excludedValue: 'No'
       }
+    },
+    '/dpt/consent/no-consent-given': {
+      '/dpt/consent/health-questions-mmr': noConsent
     },
     '/dpt/consent/health-questions': {},
     '/dpt/consent/health-allergy': {},
@@ -34,7 +41,9 @@ export function dptWizard (req) {
       }
     },
     '/dpt/consent/mmr-consent': {},
-    '/dpt/check-answers': {},
+    '/dpt/check-answers': {
+      '/dpt/consent/confirmation-no-consent': noConsent
+    },
     '/dpt/consent/confirmation': {},
     '/': {}
   }

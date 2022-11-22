@@ -1,6 +1,8 @@
 import { wizard } from 'nhsuk-prototype-rig'
 
 export function hpvWizard (req) {
+  const consented = req.session.data.consent !== 'No'
+
   const journey = {
     '/hpv/start': {},
     '/hpv/consent/school': {},
@@ -10,10 +12,10 @@ export function hpvWizard (req) {
     '/hpv/consent/child-gp': {},
     '/hpv/consent/child-nhs': {},
     '/hpv/consent/consent': {
-      '/hpv/consent/no-consent-given': {
-        data: 'consent',
-        value: 'No'
-      }
+      '/hpv/consent/health-questions': consented
+    },
+    '/hpv/consent/no-consent-given': {
+      '/hpv/consent/health-questions-mmr': true
     },
     '/hpv/consent/health-questions': {},
     '/hpv/consent/health-allergy': {},
@@ -28,7 +30,9 @@ export function hpvWizard (req) {
       }
     },
     '/hpv/consent/mmr-consent': {},
-    '/hpv/check-answers': {},
+    '/hpv/check-answers': {
+      '/hpv/consent/confirmation-no-consent': !consented
+    },
     '/hpv/consent/confirmation': {},
     '/': {}
   }

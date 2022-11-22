@@ -2,6 +2,16 @@
 {% set title = "Please tell us why you do not agree" %}
 
 {% block form %}
+  {% set other %}
+    {{ input({
+      label: {
+        classes: "nhsuk-label--s nhsuk-u-margin-bottom-1",
+        text: "Please give details"
+      },
+      decorate: "no-consent-reason-other"
+    }) }}
+  {% endset %}
+
   {{ radios({
     fieldset: {
       legend: {
@@ -19,7 +29,12 @@
       {
         divider: 'or'
       },
-      { text: 'Other' }
+      {
+        text: 'Other',
+        conditional: {
+          html: other
+        }
+      }
     ],
     decorate: "no-consent-reason"
   }) }}

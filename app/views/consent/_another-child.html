@@ -1,0 +1,22 @@
+{{ radios({
+  fieldset: {
+    legend: {
+      classes: "nhsuk-fieldset__legend--m",
+      text: "Do you need to give or refuse consent for another child?" | noOrphans | safe
+    }
+  },
+  items: [
+    {
+      text: 'Yes'
+    },
+    {
+      text: 'No'
+    }
+  ],
+  decorate: "another-child"
+}) }}
+
+{{ button({
+  text: 'Continue',
+  href: '#'
+}) }}

@@ -1,11 +1,20 @@
 {% extends "layouts/wizard.html" %}
 {% set name = d('child.name') or 'Bobby Doe' %}
+{% set 3in1consent = data['3-in-1-consent'] !== 'No' %}
+{% set menACWYconsent = data['men-acwy-consent'] !== 'No' %}
+{% set consentForBoth = 3in1consent and menACWYconsent %}
 
 {% set title %}
   {% if vaccine == "HPV" %}
     Your child will get the HPV vaccination at school
   {% elseif vaccine == "DPT" %}
-    Your child will get the 3-in-1 teenage booster and MenACWY vaccinations at school
+    {% if consentForBoth %}
+      Your child will get the 3-in-1 teenage booster and MenACWY vaccinations at school
+    {% elseif 3in1consent %}
+      Your child will get the 3-in-1 teenage booster at school
+    {% elseif menACWYconsent %}
+      Your child will get the MenACWY vaccination at school
+    {% endif %}
   {% else %}
     Your child will get a nasal flu vaccination at school
   {% endif %}
@@ -15,7 +24,7 @@
 {% block pageNavigation %}{% endblock %}
 
 {% block form %}
-  <h1 class="{% if vaccine == 'DPT' %}nhsuk-heading-l{% else %}nhsuk-heading-xl{% endif %}">{{ title }}</h1>
+  <h1 class="nhsuk-heading-xl">{{ title }}</h1>
 
   <p>We’ve sent a confirmation to jane.doe@example.com.</p>
 
@@ -24,6 +33,12 @@
   {% else %}
     <h2 class="nhsuk-heading-m">{{ vaccine | capitaliseFirstLetter }} vaccination</h2>
   {% endif %}
+
+  {% set dptHtml %}
+    {% if 3in1consent %}3-in-1 teenage booster{% endif %}
+    {% if consentForBoth %}<br />{% endif %}
+    {% if menACWYconsent %}MenACWY vaccination{% endif %}
+  {% endset %}
 
   {{ summaryList({
     rows: decorateRows([
@@ -51,8 +66,8 @@
         value: { text: "HPV vaccination (1st dose)" }
       } if vaccine == 'HPV',
       {
-        key: { text: "Vaccines" },
-        value: { html: "3-in-1 teenage booster<br >MenACWY vaccination" }
+        key: { text: "Vaccines" if consentForBoth else "Vaccine"  },
+        value: { html: dptHtml }
       } if vaccine == 'DPT'
     ])
   }) }}
@@ -61,41 +76,11 @@
     <p>We’ll let you know when the 2nd dose will be given.</p>
   {% endif %}
 
-  {% if d('health.mmr-consent') === 'Yes' %}
-    <h2 class="nhsuk-heading-m">MMR catch-up</h2>
-
-    <p>We’ll contact you to arrange an appointment at a catch-up clinic.</p>
-  {% endif %}
+  {% include 'consent/_mmr-confirmation.html' %}
 
   <h2 class="nhsuk-heading-s">If anything changes</h2>
 
   <p>[TODO] Contact the immunisation team</p>
 
-  <hr class="nhsuk-section-break nhsuk-section-break--l nhsuk-section-break--visible">
-
-  {{ radios({
-    fieldset: {
-      legend: {
-        classes: "nhsuk-fieldset__legend--m",
-        text: "Do you need to give consent for another child?"
-      }
-    },
-    items: [
-      {
-        text: 'Yes'
-      },
-      {
-        text: 'No'
-      },
-      {
-        text: 'I don’t know'
-      }
-    ],
-    decorate: "consent"
-  }) }}
-
-  {{ button({
-    text: 'Continue'
-  }) }}
-
+  {% include 'consent/_another-child.html' %}
 {% endblock %}

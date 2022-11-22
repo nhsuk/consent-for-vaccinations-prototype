@@ -1,0 +1,24 @@
+{% extends "layouts/wizard.html" %}
+{% set name = d('child.name') or 'Bobby Doe' %}
+
+{% set title %}
+  {% if vaccine == "HPV" %}
+    Your child will not get the HPV vaccination at school
+  {% elseif vaccine == "DPT" %}
+    Your child will not get the 3-in-1 teenage booster or MenACWY vaccination at school
+  {% else %}
+    Your child will not get a nasal flu vaccination at school
+  {% endif %}
+{% endset %}
+
+{% set hideButton = true %}
+{% block pageNavigation %}{% endblock %}
+
+{% block form %}
+  <h1 class="{% if vaccine == 'DPT' %}nhsuk-heading-l{% else %}nhsuk-heading-l{% endif %}">{{ title }}</h1>
+
+  <p>We’ve sent a confirmation to jane.doe@example.com.</p>
+
+  {% include 'consent/_mmr-confirmation.html' %}
+  {% include 'consent/_another-child.html' %}
+{% endblock %}
