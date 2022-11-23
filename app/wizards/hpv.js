@@ -5,18 +5,20 @@ export function hpvWizard (req) {
 
   const journey = {
     '/hpv/start': {},
-    '/hpv/consent/school': {},
+    '/hpv/consent/email': {},
+    '/hpv/consent/confirm-email': {},
     '/hpv/consent/parent-guardian': {},
     '/hpv/consent/child': {},
     '/hpv/consent/child-dob': {},
-    '/hpv/consent/child-gp': {},
-    '/hpv/consent/child-nhs': {},
+    '/hpv/consent/school': {},
     '/hpv/consent/consent': {
-      '/hpv/consent/health-questions': consented
+      '/hpv/consent/child-gp': consented
     },
     '/hpv/consent/no-consent-given': {
       '/hpv/consent/health-questions-mmr': true
     },
+    '/hpv/consent/child-gp': {},
+    '/hpv/consent/child-nhs': {},
     '/hpv/consent/health-questions': {},
     '/hpv/consent/health-allergy': {},
     '/hpv/consent/health-existing-conditions': {},

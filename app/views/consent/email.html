@@ -1,0 +1,16 @@
+{% extends "layouts/wizard.html" %}
+{% set title = "Your email address" %}
+
+{% block form %}
+  <h1 class="nhsuk-heading-l">{{ title }}</h1>
+
+  <p>We’ll use this to contact you about your child’s vaccination.</p>
+
+  {{ input({
+    label: {
+      text: "Email address",
+      classes: "nhsuk-label--s nhsuk-u-margin-bottom-1"
+    },
+    decorate: "parent.email"
+  }) }}
+{% endblock %}

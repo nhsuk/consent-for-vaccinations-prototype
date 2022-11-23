@@ -4,11 +4,20 @@
 {% block form %}
   <h1 class="nhsuk-heading-l">{{ title }}</h1>
 
+  <p>We need some details before you give or refuse consent.</p>
+
   {{ input({
     label: {
       text: "Your name"
     },
     decorate: "parent.name"
+  }) }}
+
+  {{ input({
+    label: {
+      text: "Telephone number"
+    },
+    decorate: "parent.telephone"
   }) }}
 
   {{ radios({
@@ -20,23 +29,8 @@
     items: [
       { text: 'Parent' },
       { text: 'Guardian' },
-      { text: 'Carer' },
-      { text: 'Other' }
+      { text: 'Carer' }
     ],
     decorate: "parent.relationship"
-  }) }}
-
-  {{ input({
-    label: {
-      text: "Telephone number"
-    },
-    decorate: "parent.telephone"
-  }) }}
-
-  {{ input({
-    label: {
-      text: "Email address"
-    },
-    decorate: "parent.email"
   }) }}
 {% endblock %}
