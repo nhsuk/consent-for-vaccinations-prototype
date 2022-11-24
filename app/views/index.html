@@ -7,13 +7,33 @@
     <main class="nhsuk-main-wrapper" id="main-content" role="main">
       <div class="nhsuk-grid-row">
         <div class="nhsuk-grid-column-two-thirds">
-          <h1 class="nhsuk-heading-xl">{{ serviceName + " prototype" }}</h1>
+          <h1 class="nhsuk-heading-xl">{{ serviceName + " prototypes" }}</h1>
 
-          {{ button({
-            text: 'View prototype',
-            href: '/flu/start',
-            classes: 'nhsuk-u-margin-bottom-9'
-          }) }}
+          <h2 class="nhsuk-heading-m">Consent journeys</h2>
+          <ul class="nhsuk-list">
+            <li><a href="/flu/start">Give or refuse consent for a flu vaccination</a></li>
+            <li><a href="/hpv/start">Give or refuse consent for an HPV vaccination</a></li>
+            <li><a href="/dpt/start">Give or refuse consent for the 3-in-1 teenage booster and MenACWY vaccine</a></li>
+          </ul>
+
+          <h2 class="nhsuk-heading-m">School journeys</h2>
+          <p>The journeys in these prototypes are not connected:</p>
+          <ul class="nhsuk-list">
+            <li><a href="/school/campaign/flu-preview">Flu consent request email</a></li>
+            <li><a href="/school/campaign/flu-reminder-preview">Flu consent reminder email</a></li>
+            <li><a href="/school/start">Send consent requests for vaccinations</a></li>
+            <li><a href="/school/campaigns">Current vaccination campaigns</a></li>
+          </ul>
+
+          <h2 class="nhsuk-heading-m">SAIS journeys</h2>
+          <p>The journeys in these prototypes are not connected:</p>
+          <ul class="nhsuk-list">
+            <li><a href="/sais/campaigns">School vaccination campaigns</a></li>
+          </ul>
+
+          <h2 class="nhsuk-heading-m">Other prototypes</h2>
+
+          <p><a href="https://poc-prototype.herokuapp.com/">Point of care prototype</a></p>
         </div>
       </div>
     </main>
