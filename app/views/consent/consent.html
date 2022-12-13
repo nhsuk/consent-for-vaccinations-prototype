@@ -4,7 +4,7 @@
   {% if vaccine == 'HPV' %}
     Do you agree to them having both doses of the HPV vaccination?
   {% else %}
-    Do you agree to them having a flu vaccination?
+    Do you agree to them having a nasal flu vaccination?
   {% endif %}
 {% endset %}
 
@@ -20,8 +20,13 @@
     hint: {
       text: 'Two doses will be given at least 6 months apart'
     } if vaccine == "HPV",
+    hint: {
+      text: 'The nasal flu spray contains gelatine which comes from pigs.'
+    } if vaccine == "flu",
     items: [
       {
+        text: 'Yes, I agree to them having a nasal vaccine'
+      } if vaccine == "flu" else {
         text: 'Yes, I agree'
       },
       {

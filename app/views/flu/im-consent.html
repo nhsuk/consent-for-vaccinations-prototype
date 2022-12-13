@@ -1,0 +1,41 @@
+{% extends "layouts/wizard.html" %}
+
+{% set title %}
+  Your child may be able to have an injection instead
+{% endset %}
+
+{% block form %}
+  <h1 class="nhsuk-heading-l">{{ title }}</h1>
+
+  <p>If the nasal spray is not suitable, they may be able to have an injection instead.</p>
+
+  {% set noDetails %}
+    {{ input({
+      label: {
+        text: "Please give details"
+      },
+      decorate: "im-consent-no-details"
+    }) }}
+  {% endset %}
+
+  {{ radios({
+    fieldset: {
+      legend: {
+        classes: "nhsuk-fieldset__legend--s",
+        text: "Do you agree to them having an injected flu vaccine?"
+      }
+    },
+    items: [
+      {
+        text: 'Yes, I agree'
+      },
+      {
+        text: 'No',
+        conditional: {
+          html: noDetails
+        }
+      }
+    ],
+    decorate: "im-consent"
+  }) }}
+{% endblock %}

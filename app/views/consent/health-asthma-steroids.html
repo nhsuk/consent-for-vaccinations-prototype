@@ -1,5 +1,5 @@
 {% extends "layouts/wizard.html" %}
-{% set title = "Is anyone in your household having treatment that severely affects their immune system?" %}
+{% set title = "Has your child taken any oral steroids for their asthma in the last 2 weeks?" %}
 
 {% block form %}
   {% set html %}
@@ -7,7 +7,10 @@
       label: {
         text: "Give details"
       },
-      decorate: "health.immune-system-details"
+      hint: {
+        text: "Include the steroid name, dose and length of course"
+      },
+      decorate: "health.asthma-steroid-details"
     }) }}
   {% endset %}
 
@@ -19,9 +22,6 @@
         isPageHeading: true
       }
     },
-    hint: {
-      text: 'For example, someone is waiting for a bone marrow transplant.'
-    },
     items: [
       {
         text: 'Yes',
@@ -31,6 +31,6 @@
       },
       { text: 'No' }
     ],
-    decorate: "health.immune-system"
+    decorate: "health.asthma-steroid"
   }) }}
 {% endblock %}

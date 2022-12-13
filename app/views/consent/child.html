@@ -1,12 +1,15 @@
 {% extends "layouts/wizard.html" %}
-{% set title = "About your child" %}
+{% set title = "What is your child’s name?" %}
 
 {% block form %}
   <h1 class="nhsuk-heading-l">{{ title }}</h1>
 
   {{ input({
     label: {
-      text: "Name"
+      text: "Official name"
+    },
+    hint: {
+      text: "The name on their birth certificate. If their name has changed, tell us their current name."
     },
     decorate: "child.name"
   }) }}
@@ -14,7 +17,7 @@
   {% set otherNameHtml %}
     {{ input({
       label: {
-        text: "Preferred name"
+        text: "Known as"
       },
       decorate: "child.preferred-name"
     }) }}
@@ -23,7 +26,7 @@
   {{ radios({
     fieldset: {
       legend: {
-        text: "Do they have a preferred name?"
+        text: "Are they known by another name?"
       }
     },
     items: [
@@ -40,23 +43,25 @@
     decorate: "child.preferred-name"
   }) }}
 
-  {{ radios({
-    fieldset: {
-      legend: {
-        text: "Sex"
-      }
-    },
-    items: [
-      {
-        text: 'Female'
+  {% if false and vaccine == 'HPV' %}
+    {{ radios({
+      fieldset: {
+        legend: {
+          text: "Sex"
+        }
       },
-      {
-        text: 'Male'
-      },
-      {
-        text: 'Prefer not to say'
-      }
-    ],
-    decorate: "child.sex"
-  }) }}
+      items: [
+        {
+          text: 'Female'
+        },
+        {
+          text: 'Male'
+        },
+        {
+          text: 'Prefer not to say'
+        }
+      ],
+      decorate: "child.sex"
+    }) }}
+  {% endif %}
 {% endblock %}

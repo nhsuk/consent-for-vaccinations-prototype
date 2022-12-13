@@ -4,8 +4,6 @@
 {% block form %}
   <h1 class="nhsuk-heading-l">{{ title }}</h1>
 
-  <p>We need some details before you give or refuse consent.</p>
-
   {{ input({
     label: {
       text: "Your name"
@@ -20,6 +18,18 @@
     decorate: "parent.telephone"
   }) }}
 
+  {% set other %}
+    {{ input({
+      label: {
+        text: "Give details of your relationship to the child"
+      },
+      hint: {
+        text: 'You need parental responsibility to give consent'
+      },
+      decorate: "parent.relationship-other"
+    }) }}
+  {% endset %}
+
   {{ radios({
     fieldset: {
       legend: {
@@ -29,7 +39,12 @@
     items: [
       { text: 'Parent' },
       { text: 'Guardian' },
-      { text: 'Carer' }
+      {
+        text: 'Other',
+        conditional: {
+          html: other
+        }
+      }
     ],
     decorate: "parent.relationship"
   }) }}
