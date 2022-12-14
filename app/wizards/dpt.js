@@ -8,10 +8,10 @@ export function dptWizard (req) {
     '/dpt/start': {},
     '/dpt/consent/email': {},
     '/dpt/consent/confirm-email': {},
-    '/dpt/consent/parent-guardian': {},
     '/dpt/consent/child': {},
     '/dpt/consent/child-dob': {},
     '/dpt/consent/school': {},
+    '/dpt/consent/parent-guardian': {},
     '/dpt/3-in-1-consent': {
       '/dpt/men-acwy-consent': {
         data: '3-in-1-consent',

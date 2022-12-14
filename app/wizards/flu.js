@@ -23,7 +23,7 @@ export function fluWizard (req) {
       '/flu/consent/check-answers': !consentedJab
     },
     '/flu/consent/child-gp': {},
-    // '/flu/consent/child-nhs': {},
+    '/flu/consent/child-nhs': {},
     '/flu/consent/health-questions': {},
     '/flu/consent/health-immune-system': {},
     ...consentedNasal ? {

@@ -7,10 +7,10 @@ export function hpvWizard (req) {
     '/hpv/start': {},
     '/hpv/consent/email': {},
     '/hpv/consent/confirm-email': {},
-    '/hpv/consent/parent-guardian': {},
     '/hpv/consent/child': {},
     '/hpv/consent/child-dob': {},
     '/hpv/consent/school': {},
+    '/hpv/consent/parent-guardian': {},
     '/hpv/consent/consent': {
       '/hpv/consent/child-gp': consented
     },
