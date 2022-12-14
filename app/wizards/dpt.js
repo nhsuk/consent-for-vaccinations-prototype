@@ -1,8 +1,10 @@
 import { wizard } from 'nhsuk-prototype-rig'
+import { checkForContraindications } from './check-for-contraindications.js'
 
 export function dptWizard (req) {
   const data = req.session.data
   const noConsent = data['3-in-1-consent'] === 'No' && data['men-acwy-consent'] === 'No'
+  const anyContraindications = checkForContraindications(data.health)
 
   const journey = {
     '/dpt/start': {},
@@ -38,13 +40,14 @@ export function dptWizard (req) {
     '/dpt/consent/health-questions-mmr': {},
     '/dpt/consent/health-mmr': {
       '/dpt/check-answers': {
-        data: 'health.had-mmr',
+        data: 'had-mmr',
         excludedValue: 'No'
       }
     },
     '/dpt/consent/mmr-consent': {},
     '/dpt/check-answers': {
-      '/dpt/consent/confirmation-no-consent': noConsent
+      '/dpt/consent/confirmation-no-consent': noConsent,
+      '/dpt/consent/confirmation-contraindications': anyContraindications
     },
     '/dpt/consent/confirmation': {},
     '/': {}

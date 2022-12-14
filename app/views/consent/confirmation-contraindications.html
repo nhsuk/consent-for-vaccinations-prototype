@@ -1,0 +1,42 @@
+{% extends "layouts/wizard.html" %}
+{% set name = d('child.name') or 'Bobby Doe' %}
+{% set 3in1consent = data['3-in-1-consent'] !== 'No' %}
+{% set menACWYconsent = data['men-acwy-consent'] !== 'No' %}
+{% set consentForBoth = 3in1consent and menACWYconsent %}
+
+{% set title %}
+  {% if vaccine == "HPV" %}
+    You’ve given consent for your child to get the HPV vaccination at school
+  {% elseif vaccine == "DPT" %}
+    {% if consentForBoth %}
+      You’ve given consent for your child to get the 3-in-1 teenage booster and MenACWY vaccinations at school
+    {% elseif 3in1consent %}
+      You’ve given consent for your child to get the 3-in-1 teenage booster at school
+    {% elseif menACWYconsent %}
+      You’ve given consent for your child to get the MenACWY vaccination at school
+    {% endif %}
+  {% else %}
+    You’ve given consent for your child to get a flu vaccination
+  {% endif %}
+{% endset %}
+
+{% set hideButton = true %}
+{% block pageNavigation %}{% endblock %}
+
+{% block form %}
+  <h1 class="nhsuk-heading-xl">{{ title }}</h1>
+
+  <p>A member of our health team will be in touch to discuss your answers to the health questions.</p>
+
+  <p>Our health team will confirm if your child will get their {% if vaccine == "DPT" and consentForBoth %}vaccinations{% else %}vaccination{% endif %} at school.</p>
+
+  <p>We’ve sent confirmation of your consent to jane.doe@example.com.</p>
+
+  {% include 'consent/_mmr-confirmation.html' %}
+
+  <h2 class="nhsuk-heading-s">If anything changes</h2>
+
+  <p>[TODO] Contact the immunisation team</p>
+
+  {% include 'consent/_another-child.html' %}
+{% endblock %}

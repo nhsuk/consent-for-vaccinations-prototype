@@ -1,8 +1,10 @@
 import { wizard } from 'nhsuk-prototype-rig'
+import { checkForContraindications } from './check-for-contraindications.js'
 
 export function fluWizard (req) {
   const consentedNasal = req.session.data.consent !== 'No'
   const consentedJab = req.session.data['im-consent'] !== 'No'
+  const anyContraindications = checkForContraindications(req.session.data.health)
 
   const journey = {
     '/flu/start': {},
@@ -40,7 +42,8 @@ export function fluWizard (req) {
     '/flu/consent/health-egg-allergy': {},
     '/flu/consent/health-anything-else': {},
     '/flu/consent/check-answers': {
-      '/flu/consent/confirmation-no-consent': !consentedNasal && !consentedJab
+      '/flu/consent/confirmation-no-consent': !consentedNasal && !consentedJab,
+      '/flu/consent/confirmation-contraindications': anyContraindications
     },
     '/flu/consent/confirmation': {},
     '/': {}

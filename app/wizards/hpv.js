@@ -1,7 +1,9 @@
 import { wizard } from 'nhsuk-prototype-rig'
+import { checkForContraindications } from './check-for-contraindications.js'
 
 export function hpvWizard (req) {
   const consented = req.session.data.consent !== 'No'
+  const anyContraindications = checkForContraindications(req.session.data.health)
 
   const journey = {
     '/hpv/start': {},
@@ -27,13 +29,14 @@ export function hpvWizard (req) {
     '/hpv/consent/health-questions-mmr': {},
     '/hpv/consent/health-mmr': {
       '/hpv/check-answers': {
-        data: 'health.had-mmr',
+        data: 'had-mmr',
         excludedValue: 'No'
       }
     },
     '/hpv/consent/mmr-consent': {},
     '/hpv/check-answers': {
-      '/hpv/consent/confirmation-no-consent': !consented
+      '/hpv/consent/confirmation-no-consent': !consented,
+      '/hpv/consent/confirmation-contraindications': anyContraindications
     },
     '/hpv/consent/confirmation': {},
     '/': {}
