@@ -26,7 +26,7 @@
     "packages/*"
   ],
   "dependencies": {
-    "@rollup/plugin-commonjs": "^24.0.0",
+    "@rollup/plugin-commonjs": "^24.0.1",
     "@rollup/plugin-node-resolve": "^15.0.1",
     "nhsuk-prototype-rig": "^0.0.3",
     "luxon": "^3.2.1",
