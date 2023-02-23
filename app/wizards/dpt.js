@@ -31,6 +31,7 @@ export function dptWizard (req) {
       '/dpt/consent/health-questions-mmr': noConsent
     },
     '/dpt/consent/child-gp': {},
+    '/dpt/consent/address': {},
     '/dpt/consent/child-nhs': {},
     '/dpt/consent/health-questions': {},
     '/dpt/consent/health-allergy': {},

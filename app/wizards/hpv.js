@@ -20,6 +20,7 @@ export function hpvWizard (req) {
       '/hpv/consent/health-questions-mmr': true
     },
     '/hpv/consent/child-gp': {},
+    '/hpv/consent/address': {},
     '/hpv/consent/child-nhs': {},
     '/hpv/consent/health-questions': {},
     '/hpv/consent/health-allergy': {},

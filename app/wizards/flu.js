@@ -25,20 +25,23 @@ export function fluWizard (req) {
       '/flu/consent/check-answers': !consentedJab
     },
     '/flu/consent/child-gp': {},
+    '/flu/consent/address': {},
     '/flu/consent/child-nhs': {},
     '/flu/consent/health-questions': {},
     '/flu/consent/health-immune-system': {},
-    ...consentedNasal ? {
-      '/flu/consent/health-household-immune-system': {},
-      '/flu/consent/health-asthma': {
-        '/flu/consent/health-egg-allergy': {
-          data: 'health.asthma',
-          value: 'No'
+    ...consentedNasal
+      ? {
+          '/flu/consent/health-household-immune-system': {},
+          '/flu/consent/health-asthma': {
+            '/flu/consent/health-egg-allergy': {
+              data: 'health.asthma',
+              value: 'No'
+            }
+          },
+          '/flu/consent/health-asthma-steroids': {},
+          '/flu/consent/health-aspirin': {}
         }
-      },
-      '/flu/consent/health-asthma-steroids': {},
-      '/flu/consent/health-aspirin': {}
-    } : {},
+      : {},
     '/flu/consent/health-egg-allergy': {},
     '/flu/consent/health-anything-else': {},
     '/flu/consent/check-answers': {
