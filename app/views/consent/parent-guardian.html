@@ -19,12 +19,13 @@
   }) }}
 
   {% set other %}
+    <p>You need parental responsibility to give consent. This means you have legal rights and duties relating to the child.</p>
     {{ input({
       label: {
-        text: "Give details of your relationship to the child"
+        text: "Relationship to the child"
       },
       hint: {
-        text: 'You need parental responsibility to give consent'
+        text: 'For example, carer'
       },
       decorate: "parent.relationship-other"
     }) }}
@@ -37,7 +38,8 @@
       }
     },
     items: [
-      { text: 'Parent' },
+      { text: 'Mum' },
+      { text: 'Dad' },
       { text: 'Guardian' },
       {
         text: 'Other',
