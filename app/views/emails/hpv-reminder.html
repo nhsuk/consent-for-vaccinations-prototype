@@ -1,0 +1,18 @@
+{% extends "layouts/email.html" %}
+{% set subject = "Please respond to our request for consent by 2 June" %}
+{% set from = "School vaccinations <school.vaccinations@nhs.net>" %}
+
+{% block email %}
+  <p>We wrote to you recently about a visit by a local health team to [name of school] on Tuesday 6 June 2023.</p>
+
+  <p>If you want your child to receive an HPV vaccine during this visit, you need to give consent by Friday 2 June.</p>
+
+  <p>
+    <a href="/hpv/start">Give or refuse consent for the HPV vaccination</a>
+  </p>
+
+  <p>This will take less than 5 minutes. If you do not give consent, it’s still important for you to respond.</p>
+
+  {% include 'emails/_hpv-about.html' %}
+  {% include 'emails/_contact.html' %}
+{% endblock %}
