@@ -1,23 +1,21 @@
-# NHS.UK Prototype Rig template
+# Give or refuse consent for vaccinations prototype
 
-A template prototype, built using the [NHS.UK Prototype Rig](https://github.com/x-govuk/nhsuk-prototype-rig).
+A prototype for capturing digital consent for children’s vaccinations. Built using the [NHS.UK Prototype Rig](https://github.com/x-govuk/nhsuk-prototype-rig).
 
-Use this repository as a template.
+View the prototype:
+
+https://consent-prototype.herokuapp.com/
 
 ## Requirements
 
-* Node.js v16
-* [Node version manager (NVM)](https://github.com/nvm-sh/nvm)
+Node.js v18
 
 ## Installation
 
 1. Clone this repository
 
-2. Use [NVM](https://github.com/nvm-sh/nvm) to run the correct Node version:\
-`nvm use`
-
-3. Install the dependencies:\
+2. Install the dependencies:\
 `npm install`
 
-4. Start the application:\
-`nvm use; npm start`
+3. Start the application:\
+`npm run dev`
