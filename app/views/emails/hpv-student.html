@@ -1,0 +1,52 @@
+{% extends "layouts/email.html" %}
+{% set subject = "You can get an HPV vaccination on 6 June" %}
+{% set from = "School vaccinations <school.vaccinations@nhs.net>" %}
+
+{% block email %}
+  <p>A team of nurses are coming to your school on 6 June 2023 to offer everyone in Year 8 a vaccine that protects you from something called the human papillomavirus. This is known as ‘HPV’ for short.
+</p>
+
+  <h2 class="nhsuk-heading-m">What is HPV?</h2>
+  <p>HPV is a virus that most people will get at some point in their life. Some types of HPV cause cancer.</p>
+
+  <h2 class="nhsuk-heading-m">Why does the NHS offer the vaccine?</h2>
+
+  <p>The HPV vaccine helps to protect you against:</p>
+
+  <ul class="nhsuk-list nhsuk-list--bullet">
+    <li>cervical cancer</li>
+    <li>mouth and throat cancers</li>
+    <li>cancers of the anal and genital areas</li>
+  </ul>
+
+  <p>It also helps to protect against genital warts.</p>
+
+  <h2 class="nhsuk-heading-m">How does the vaccine work?</h2>
+
+  <p>When the vaccine is injected into your body, your immune system makes antibodies. If you got HPV in the future, these antibodies would stop the virus from infecting your cells.</p>
+  <p>The vaccine is given in your arm, and you need two doses to be fully protected.</p>
+
+  <h2 class="nhsuk-heading-m">Who can have the vaccine?</h2>
+
+  <p>The first dose is offered to everyone in Year 8. We’ll let you know when it’s time for the second dose. This is usually 6 to 24 months after the first one.</p>
+
+  <h2 class="nhsuk-heading-m">How do I get the vaccine?</h2>
+
+  <p>The nurses coming into school can only give you the vaccine if they have permission. We’ve contacted your parents and asked if they’re happy for you to have the vaccine.</p>
+  <p>If they tell us they are happy, all you need to do is come to school as normal on 6 June. One of the nurses will have a quick chat with you and then give you the vaccine.</p>
+
+  <p>If your parents don’t get back to us, or if they say they’re not happy for you to have the vaccine, you can:</p>
+
+  <ul class="govuk-list govuk-list--bullet">
+    <li>decide not to have the vaccine</li>
+    <li>give the nurses permission yourself</li>
+  </ul>
+
+  <p>If you want to give permission yourself, you can talk to a nurse on 6 June and explain why you want the vaccine. If you go on to have the vaccine, your parents will get an email to let them know this has happened.</p>
+
+  <h2 class="nhsuk-heading-m">What should I do now?</h2>
+
+  <p>Have a read of <a href="https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/1059900/UKHSA-HPV-vaccination-for-all-leaflet.pdf">the leaflet about HPV</a> that comes with this email to find out more about the HPV vaccine. We also suggest you talk to your parents about what you want.</p>
+
+  {% include 'emails/_contact.html' %}
+{% endblock %}
