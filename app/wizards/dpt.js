@@ -40,13 +40,13 @@ export function dptWizard (req) {
     '/dpt/consent/health-anything-else': {},
     '/dpt/consent/health-questions-mmr': {},
     '/dpt/consent/health-mmr': {
-      '/dpt/check-answers': {
+      '/dpt/consent/check-answers': {
         data: 'had-mmr',
         excludedValue: 'No'
       }
     },
     '/dpt/consent/mmr-consent': {},
-    '/dpt/check-answers': {
+    '/dpt/consent/check-answers': {
       '/dpt/consent/confirmation-no-consent': noConsent,
       '/dpt/consent/confirmation-contraindications': anyContraindications
     },

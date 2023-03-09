@@ -27,15 +27,14 @@ export function hpvWizard (req) {
     '/hpv/consent/health-existing-conditions': {},
     '/hpv/consent/health-regular-medication': {},
     '/hpv/consent/health-anything-else': {},
-    '/hpv/consent/health-questions-mmr': {},
-    '/hpv/consent/health-mmr': {
-      '/hpv/check-answers': {
+    '/hpv/consent/health-questions-mmr': {
+      '/hpv/consent/check-answers': {
         data: 'had-mmr',
         excludedValue: 'No'
       }
     },
     '/hpv/consent/mmr-consent': {},
-    '/hpv/check-answers': {
+    '/hpv/consent/check-answers': {
       '/hpv/consent/confirmation-no-consent': !consented,
       '/hpv/consent/confirmation-contraindications': anyContraindications
     },
