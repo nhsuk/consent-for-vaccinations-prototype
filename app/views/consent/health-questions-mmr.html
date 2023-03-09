@@ -1,8 +1,32 @@
 {% extends "layouts/wizard.html" %}
-{% set title = "Checking your child is up to date with their MMR vaccinations" %}
+{% set title = "MMR vaccinations" %}
 
 {% block form %}
   <h1 class="nhsuk-heading-l">{{ title }}</h1>
 
-  <p>We also want to check that your child is up to date with their Measles, Mumps and Rubella (MMR) vaccinations.</p>
+  <p class="nhsuk-u-margin-bottom-6">We also want to check that your child is up to date with their Measles, Mumps and Rubella (MMR) vaccinations.</p>
+
+  {{ radios({
+    fieldset: {
+      legend: {
+        classes: "nhsuk-fieldset__legend--m",
+        text: "Has your child had 2 doses of the MMR vaccine since the age of one?",
+        isPageHeading: true
+      }
+    },
+    items: [
+      {
+        text: 'Yes, they are up to date with their MMR vaccinations',
+        value: 'Yes'
+      },
+      {
+        text: 'No, they have not had 2 doses',
+        value: 'No'
+      },
+      {
+        text: 'I don’t know'
+      }
+    ],
+    decorate: "had-mmr"
+  }) }}
 {% endblock %}
