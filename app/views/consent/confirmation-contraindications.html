@@ -31,12 +31,4 @@
   <p>Our health team will confirm if your child will get their {% if vaccine == "DPT" and consentForBoth %}vaccinations{% else %}vaccination{% endif %} at school.</p>
 
   <p>We’ve sent confirmation of your consent to jane.doe@example.com.</p>
-
-  {% include 'consent/_mmr-confirmation.html' %}
-
-  <h2 class="nhsuk-heading-s">If anything changes</h2>
-
-  <p>[TODO] Contact the immunisation team</p>
-
-  {% include 'consent/_another-child.html' %}
 {% endblock %}

@@ -7,8 +7,6 @@ export function hpvWizard (req) {
 
   const journey = {
     '/hpv/start': {},
-    '/hpv/consent/email': {},
-    '/hpv/consent/confirm-email': {},
     '/hpv/consent/child': {},
     '/hpv/consent/child-dob': {},
     '/hpv/consent/school': {},
@@ -17,23 +15,14 @@ export function hpvWizard (req) {
       '/hpv/consent/child-gp': consented
     },
     '/hpv/consent/no-consent-given': {
-      '/hpv/consent/health-questions-mmr': true
+      '/hpv/consent/check-answers': true
     },
     '/hpv/consent/child-gp': {},
     '/hpv/consent/address': {},
-    '/hpv/consent/child-nhs': {},
-    '/hpv/consent/health-questions': {},
     '/hpv/consent/health-allergy': {},
     '/hpv/consent/health-existing-conditions': {},
     '/hpv/consent/health-regular-medication': {},
     '/hpv/consent/health-anything-else': {},
-    '/hpv/consent/health-questions-mmr': {
-      '/hpv/consent/check-answers': {
-        data: 'had-mmr',
-        excludedValue: 'No'
-      }
-    },
-    '/hpv/consent/mmr-consent': {},
     '/hpv/consent/check-answers': {
       '/hpv/consent/confirmation-no-consent': !consented,
       '/hpv/consent/confirmation-contraindications': anyContraindications

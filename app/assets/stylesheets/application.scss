@@ -18,3 +18,13 @@ $govuk-assets-path: "/govuk/assets/";
 .nhsuk-header__service-name {
   max-width: none !important;
 }
+
+.app-u-frutiger,
+.app-u-frutiger * {
+  font-family: "Frutiger W01", Arial, sans-serif !important
+}
+
+.app-panel h1 {
+  @include govuk-font(36, $weight: bold);
+  font-family: "Frutiger W01", Arial, sans-serif !important
+}

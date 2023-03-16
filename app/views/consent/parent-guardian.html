@@ -15,7 +15,17 @@
     label: {
       text: "Telephone number"
     },
+    hint: {
+      text: "We might need to call you about your child’s vaccination"
+    },
     decorate: "parent.telephone"
+  }) }}
+
+  {{ input({
+    label: {
+      text: "Email address"
+    },
+    decorate: "parent.email"
   }) }}
 
   {% set other %}
