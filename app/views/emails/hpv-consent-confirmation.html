@@ -1,0 +1,24 @@
+{% extends "layouts/email.html" %}
+{% set subject = "Your child will get the HPV vaccine on 6 June" %}
+{% set name = parent.name or 'Jane Doe' %}
+{% set childName = child.name or 'Bobby Doe' %}
+{% set from = "School vaccinations <school.vaccinations@nhs.net>" %}
+
+{% block email %}
+  <p>Dear {{ name }},</p>
+
+  <p>You’ve agreed for {{ childName }} to get the HPV vaccination at Hele’s School. The first dose will be given on Tuesday 6 June.</p>
+
+  <p>We’ll let you know when the vaccine has been given.</p>
+
+  <p>Please get in touch if:</p>
+
+  <ul class="govuk-list govuk-list--bullet">
+    <li>your child’s health changes</li>
+    <li>you get the vaccination elsewhere</li>
+    <li>you change your mind</li>
+  </ul>
+
+  {% set hideContactHeading = true %}
+  {% include 'emails/_contact.html' %}
+{% endblock %}

@@ -1,0 +1,33 @@
+{% extends "layouts/email.html" %}
+{% set subject = "Your child got their first dose of the HPV vaccine" %}
+{% set name = parent.name or 'Jane Doe' %}
+{% set childName = child.name or 'Bobby Doe' %}
+{% set from = "School vaccinations <school.vaccinations@nhs.net>" %}
+
+{% block email %}
+  <p>Dear {{ name }},</p>
+
+  <p>{{ childName }} got the first dose of their HPV vaccination at Hele’s School today. </p>
+
+  <p>We suggest you record the following details in their red book (also known as their personal child health record):</p>
+
+  <ul class="govuk-list govuk-list--bullet">
+    <li>Vaccination: HPV first dose</li>
+    <li>Vaccine: Gardasil 9</li>
+    <li>Date of vaccination: 6 June 2023</li>
+    <li>Batch number: PH3539</li>
+  </ul>
+
+  <h2 class="nhsuk-heading-m">Possible side effects</h2>
+
+  <p>Your child might have some of the following side effects:</p>
+
+  <ul class="govuk-list govuk-list--bullet">
+    <li>bruising or itching at the site of the injection</li>
+    <li>a high temperature, or feeling hot and shivery</li>
+    <li>feeling sick (nausea)</li>
+    <li>pain in the arms, hands, fingers</li>
+  </ul>
+
+  <p>If you’re concerned about your child’s reaction to the vaccine, contact your GP in the usual way.</p>
+{% endblock %}
