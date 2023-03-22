@@ -28,6 +28,23 @@
     decorate: "parent.email"
   }) }}
 
+  {{ radios({
+    fieldset: {
+      legend: {
+        text: "What’s the best way for us to contact you?"
+      }
+    },
+    hint: {
+      text: "For example, to send a confirmation"
+    },
+    items: [
+      { text: 'By text message' },
+      { text: 'By email' },
+      { text: 'By telephone' }
+    ],
+    decorate: "parent.best-contact-method"
+  }) }}
+
   {% set other %}
     <p>You need parental responsibility to give consent. This means you have legal rights and duties relating to the child.</p>
     {{ input({
