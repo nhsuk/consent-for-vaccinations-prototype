@@ -11,23 +11,6 @@
     decorate: "parent.name"
   }) }}
 
-  {{ input({
-    label: {
-      text: "Telephone number"
-    },
-    hint: {
-      text: "We might need to call you about your child’s vaccination"
-    },
-    decorate: "parent.telephone"
-  }) }}
-
-  {{ input({
-    label: {
-      text: "Email address"
-    },
-    decorate: "parent.email"
-  }) }}
-
   {% set other %}
     <p>You need parental responsibility to give consent. This means you have legal rights and duties relating to the child.</p>
     {{ input({
@@ -59,5 +42,61 @@
       }
     ],
     decorate: "parent.relationship"
+  }) }}
+
+  {{ input({
+    label: {
+      text: "Email address"
+    },
+    decorate: "parent.email"
+  }) }}
+
+  {{ input({
+    label: {
+      text: "Telephone number"
+    },
+    hint: {
+      text: "A nurse might call you about your child’s vaccination"
+    },
+    decorate: "parent.telephone"
+  }) }}
+
+  {% set accessibilityOptions %}
+    {% set otherHtml %}
+      {{ textarea({
+        label: {
+          text: "Give details"
+        },
+        rows: 5,
+        formGroup: {
+          classes: 'nhsuk-u-margin-bottom-0'
+        },
+        decorate: "parent.accessibility-other"
+      }) }}
+    {% endset %}
+
+    {{ radios({
+      fieldset: {
+        legend: {
+          text: "Do you need any of the following?"
+        }
+      },
+      items: [
+        { text: 'Text only (no voice calls)' },
+        { text: 'Voice only (no text)' },
+        {
+          text: 'Other',
+          conditional: {
+            html: otherHtml
+          }
+        }
+      ],
+      decorate: "parent.accessibility"
+    }) }}
+  {% endset %}
+
+  {{ details({
+    text: "I need to tell you more about how to contact me",
+    HTML: accessibilityOptions
   }) }}
 {% endblock %}
