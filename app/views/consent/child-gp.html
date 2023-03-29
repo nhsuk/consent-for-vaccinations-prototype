@@ -23,17 +23,19 @@
     items: [
       {
         text: 'Yes, they are registered with a GP',
+        value: 'yes',
         conditional: {
           html: html
         }
       },
       {
-        text: 'No, they are not registered with a GP'
+        text: 'No, they are not registered with a GP',
+        value: 'no'
       },
       {
         text: 'I don’t know'
       }
     ],
-    decorate: "child.dob"
+    decorate: "child.has-gp"
   }) }}
 {% endblock %}

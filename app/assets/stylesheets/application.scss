@@ -28,3 +28,24 @@ $govuk-assets-path: "/govuk/assets/";
   @include govuk-font(36, $weight: bold);
   font-family: "Frutiger W01", Arial, sans-serif !important
 }
+
+.app-summary-list--full-width {
+  .nhsuk-summary-list__row {
+    .nhsuk-summary-list__key,
+    .nhsuk-summary-list__value,
+    .nhsuk-summary-list__actions {
+      display: block;
+      width: 100%;
+      text-align: left;
+      border: none;
+    }
+  }
+}
+
+.nhsuk-card .nhsuk-summary-list__row:last-child {
+  .nhsuk-summary-list__key,
+  .nhsuk-summary-list__value,
+  .nhsuk-summary-list__actions {
+    border-bottom: none;
+  }
+}

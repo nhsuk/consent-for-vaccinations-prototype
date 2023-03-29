@@ -1,9 +1,157 @@
 {% extends "layouts/wizard.html" %}
 {% set title = "Check your answers and confirm" %}
 {% set buttonText = "Confirm" %}
+{% set basePath = '/' + (vaccine | lower) + '/' %}
+{% set consented = data.consent == 'Yes, I agree' or not data.consent %}
 
 {% block form %}
   <h1 class="nhsuk-heading-l">{{ title }}</h1>
 
-  <p>[Review your answers – this has not been built yet]</p>
+  <h2 class="nhsuk-heading-m">Consent</h2>
+
+  <div class="nhsuk-card">
+    <div class="nhsuk-card__content">
+      {{ summaryList({
+        rows: decorateRows([
+          {
+            key: 'Do you agree?',
+            data: 'consent',
+            href: basePath + 'consent/consent'
+          },
+          {
+            key: 'Reason',
+            data: 'no-consent-reason',
+            href: basePath + 'consent/no-consent-given'
+          } if not consented
+        ])
+      }) }}
+    </div>
+  </div>
+
+  {% set addressHtml %}
+    <p>
+      {% if d('address.line1') %}{{ d('address.line1') }}{% endif %}
+      {% if d('address.line2') %}<br />{{ d('address.line2') }}{% endif %}
+      {% if d('address.level2') %}<br />{{ d('address.level2') }}{% endif %}
+      {% if d('address.postal-code') %}<br />{{ d('address.postal-code') }}{% endif %}
+    </p>
+  {% endset %}
+
+  <h2 class="nhsuk-heading-m">About your child</h2>
+  <div class="nhsuk-card">
+    <div class="nhsuk-card__content">
+      {{ summaryList({
+        rows: decorateRows([
+          {
+            key: 'Child’s name',
+            data: 'child.name',
+            href: basePath + 'consent/child'
+          },
+          {
+            key: 'Also known as',
+            data: 'child.preferred-name',
+            href: basePath + 'consent/child'
+          } if d('child.preferred-name'),
+          {
+            key: 'Date of birth',
+            value: d('child.dob') | isoDateFromDateInput | govukDate,
+            href: basePath + 'consent/child-dob'
+          } if d('child.dob'),
+          {
+            key: 'Address',
+            value: {
+              html: addressHtml
+            },
+            href: basePath + 'consent/address'
+          } if consented,
+          {
+            key: 'School',
+            value: 'Hele’s Secondary School',
+            href: basePath + 'consent/school'
+          },
+          {
+            key: 'GP Surgery',
+            data: 'child.gp',
+            href: basePath + 'consent/child-gp'
+          } if consented and d('child.gp') and d('child.has-gp') == 'yes',
+          {
+            key: 'Registered with a GP',
+            value: d('child.has-gp') | capitaliseFirstLetter,
+            href: basePath + 'consent/child-gp'
+          } if consented and d('child.has-gp') != 'yes'
+        ])
+      }) }}
+    </div>
+  </div>
+
+  <h2 class="nhsuk-heading-m">About you</h2>
+  <div class="nhsuk-card">
+    <div class="nhsuk-card__content">
+      {{ summaryList({
+        rows: decorateRows([
+          {
+            key: 'Your name',
+            data: 'parent.name',
+            href: basePath + 'consent/parent-guardian'
+          },
+          {
+            key: 'Relationship',
+            data: 'parent.relationship',
+            href: basePath + 'consent/parent-guardian'
+          },
+          {
+            key: 'Email address',
+            data: 'parent.email',
+            href: basePath + 'consent/parent-guardian'
+          },
+          {
+            key: 'Phone number',
+            data: 'parent.telephone',
+            href: basePath + 'consent/parent-guardian'
+          }
+        ])
+      }) }}
+    </div>
+  </div>
+
+  {% if consented %}
+  <h2 class="nhsuk-heading-m">Health questions</h2>
+  <div class="nhsuk-card">
+    <div class="nhsuk-card__content">
+      {{ summaryList({
+        classes: 'app-summary-list--full-width',
+        rows: decorateRows([
+          {
+            key: 'Does your child have any severe allergies that have led to an anaphylactic reaction?',
+            value: {
+              html: d('health.allergy') if d('health.allergy') == 'No' else d('health.allergy') + ' – ' + d('health.allergy-details')
+            },
+            href: basePath + 'consent/health-allergy'
+          },
+          {
+            key: 'Does your child have any existing medical conditions?',
+            value: {
+              html: d('health.existing-conditions') if d('health.existing-conditions') == 'No' else d('health.existing-conditions') + ' – ' + d('health.existing-conditions-details')
+            },
+            href: basePath + 'consent/health-existing-conditions'
+          },
+          {
+            key: 'Does your child take any regular medication?',
+            value: {
+              html: d('health.regular-medication') if d('health.regular-medication') == 'No' else d('health.regular-medication') + ' – ' + d('health.regular-medication-details')
+            },
+            href: basePath + 'consent/health-regular-medication'
+          },
+          {
+            key: 'Is there anything else you think we should know?',
+            value: {
+              html: d('health.anything-else') if d('health.anything-else') == 'No' else d('health.anything-else') + ' – ' + d('health.anything-else-details')
+            },
+            href: basePath + 'consent/health-anything-else'
+          }
+        ])
+      }) }}
+    </div>
+  </div>
+  {% endif %}
 {% endblock %}
