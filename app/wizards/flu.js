@@ -8,8 +8,6 @@ export function fluWizard (req) {
 
   const journey = {
     '/flu/start': {},
-    '/flu/consent/email': {},
-    '/flu/consent/confirm-email': {},
     '/flu/consent/child': {},
     '/flu/consent/child-dob': {},
     '/flu/consent/school': {},
@@ -26,8 +24,6 @@ export function fluWizard (req) {
     },
     '/flu/consent/child-gp': {},
     '/flu/consent/address': {},
-    '/flu/consent/child-nhs': {},
-    '/flu/consent/health-questions': {},
     '/flu/consent/health-immune-system': {},
     ...consentedNasal
       ? {
