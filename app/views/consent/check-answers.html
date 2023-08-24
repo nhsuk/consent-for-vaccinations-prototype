@@ -23,7 +23,12 @@
             key: 'Reason',
             data: 'no-consent-reason',
             href: basePath + 'consent/no-consent-given'
-          } if not consented
+          } if not consented,
+          {
+            key: 'Alternative option',
+            data: 'im-consent',
+            href: basePath + 'im-consent'
+          } if not consented and d('im-consent')
         ])
       }) }}
     </div>

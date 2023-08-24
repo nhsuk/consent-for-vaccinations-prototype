@@ -9,31 +9,20 @@
 
   <p>If the nasal spray is not suitable, they may be able to have an injection instead.</p>
 
-  {% set noDetails %}
-    {{ input({
-      label: {
-        text: "Please give details"
-      },
-      decorate: "im-consent-no-details"
-    }) }}
-  {% endset %}
-
   {{ radios({
     fieldset: {
       legend: {
         classes: "nhsuk-fieldset__legend--s",
-        text: "Do you agree to them having an injected flu vaccine?"
+        text: "Would you like a nurse to contact you about this option?"
       }
     },
     items: [
       {
-        text: 'Yes, I agree'
+        text: 'Yes, I am happy for a nurse to contact me',
+        value: 'A nurse can contact me about an injection'
       },
       {
-        text: 'No',
-        conditional: {
-          html: noDetails
-        }
+        text: 'No'
       }
     ],
     decorate: "im-consent"
