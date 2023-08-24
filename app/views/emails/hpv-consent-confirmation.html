@@ -1,7 +1,6 @@
 {% extends "layouts/email.html" %}
 {% set subject = "Your child will get the HPV vaccine on 6 June" %}
 {% set name = parent.name or 'Jane Doe' %}
-{% set childName = child.name or 'Bobby Doe' %}
 {% set from = "School vaccinations <school.vaccinations@nhs.net>" %}
 
 {% block email %}

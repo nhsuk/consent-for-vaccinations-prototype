@@ -1,11 +1,10 @@
 {% extends "layouts/wizard.html" %}
-{% set name = d('child.name') or 'Bobby Doe' %}
 
 {% set title %}
   {% if vaccine == "HPV" %}
-    {{ name }} will get the HPV vaccination at school
+    {{ childName }} will get the HPV vaccination at school
   {% else %}
-    {{ name }} will get a nasal flu vaccination at school
+    {{ childName }} will get a nasal flu vaccination at school
   {% endif %}
 {% endset %}
 

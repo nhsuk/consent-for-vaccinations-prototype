@@ -4,14 +4,23 @@
 {% block form %}
   <h1 class="nhsuk-heading-l">{{ title }}</h1>
 
+  <p>Give the official name that’s on their passport or birth certificate. If their name has changed, tell us their current name.</p>
+
   {{ input({
     label: {
-      text: "Official name"
+      text: "First name"
     },
     hint: {
-      text: "The name on their passport or birth certificate. If their name has changed, tell us their current name."
+      text: ""
     },
-    decorate: "child.name"
+    decorate: "child.first-name"
+  }) }}
+
+  {{ input({
+    label: {
+      text: "Last name"
+    },
+    decorate: "child.last-name"
   }) }}
 
   {% set otherNameHtml %}
