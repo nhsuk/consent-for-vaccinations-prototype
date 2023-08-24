@@ -12,6 +12,15 @@
 
   <div class="nhsuk-card">
     <div class="nhsuk-card__content">
+      {% set reasonHtml %}
+        <p>
+          {{ d('no-consent-reason') }}
+        </p>
+        <p>
+          {{ d('no-consent-reason-details') }}
+        </p>
+      {% endset %}
+
       {{ summaryList({
         rows: decorateRows([
           {
@@ -21,7 +30,9 @@
           },
           {
             key: 'Reason',
-            data: 'no-consent-reason',
+            value: {
+              html: reasonHtml
+            },
             href: basePath + 'consent/no-consent-given'
           } if not consented,
           {
