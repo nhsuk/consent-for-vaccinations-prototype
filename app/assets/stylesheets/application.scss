@@ -9,24 +9,24 @@ $govuk-assets-path: "/govuk/assets/";
 @import "govuk-frontend/govuk/all";
 
 // Import GOV.UK Prototype Components
-@import "govuk-prototype-components/x-govuk/all";
+@import "@x-govuk/govuk-prototype-components/x-govuk/all";
 
 // Add extra styles here, or re-organise the Sass files in whichever way makes most sense to you
-@import "_unbranded.scss";
-@import "_email.scss";
+@import "unbranded";
+@import "email";
 
 .nhsuk-header__service-name {
-  max-width: none !important;
+  max-width: none;
 }
 
 .app-u-frutiger,
 .app-u-frutiger * {
-  font-family: "Frutiger W01", Arial, sans-serif !important
+  font-family: "Frutiger W01", Arial, sans-serif;
 }
 
 .app-panel h1 {
   @include govuk-font(36, $weight: bold);
-  font-family: "Frutiger W01", Arial, sans-serif !important
+  font-family: "Frutiger W01", Arial, sans-serif;
 }
 
 .app-summary-list--full-width {
