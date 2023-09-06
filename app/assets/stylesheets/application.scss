@@ -12,26 +12,25 @@ $govuk-assets-path: "/govuk/assets/";
 @import "@x-govuk/govuk-prototype-components/x-govuk/all";
 
 // Add extra styles here, or re-organise the Sass files in whichever way makes most sense to you
-@import "_unbranded.scss";
-@import "_email.scss";
+@import "unbranded";
+@import "email";
 
 .nhsuk-header__service-name {
-  max-width: none !important;
+  max-width: none;
 }
 
 .app-u-frutiger,
 .app-u-frutiger * {
-  font-family: "Frutiger W01", Arial, sans-serif !important
+  font-family: "Frutiger W01", Arial, sans-serif;
 }
 
 .app-panel h1 {
   @include govuk-font(36, $weight: bold);
-  font-family: "Frutiger W01", Arial, sans-serif !important
+  font-family: "Frutiger W01", Arial, sans-serif;
 }
 
 .app-summary-list--full-width {
   .nhsuk-summary-list__row {
-
     .nhsuk-summary-list__key,
     .nhsuk-summary-list__value,
     .nhsuk-summary-list__actions {
@@ -44,7 +43,6 @@ $govuk-assets-path: "/govuk/assets/";
 }
 
 .nhsuk-card .nhsuk-summary-list__row:last-child {
-
   .nhsuk-summary-list__key,
   .nhsuk-summary-list__value,
   .nhsuk-summary-list__actions {
