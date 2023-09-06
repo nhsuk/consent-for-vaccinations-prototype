@@ -10,7 +10,12 @@ export function fluWizard (req) {
     '/flu/start': {},
     '/flu/consent/child': {},
     '/flu/consent/child-dob': {},
-    '/flu/consent/school': {},
+    '/flu/consent/school': {
+      '/flu/consent/school-not-in-pilot': {
+        data: 'child.school',
+        value: 'No, they go to a different school'
+      }
+    },
     '/flu/consent/parent-guardian': {},
     '/flu/consent/consent': {
       '/flu/consent/child-gp': consentedNasal
