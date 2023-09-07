@@ -1,5 +1,5 @@
 {% extends "layouts/wizard.html" %}
-{% set title = "Is anyone in your household having treatment that severely affects their immune system?" %}
+{% set title = "Is anyone in your household currently having treatment that severely affects their immune system?" %}
 
 {% block form %}
   {% set html %}
@@ -7,7 +7,7 @@
       label: {
         text: "Give details"
       },
-      decorate: "health.immune-system-details"
+      decorate: "health.household-immune-system-details"
     }) }}
   {% endset %}
 
@@ -20,7 +20,7 @@
       }
     },
     hint: {
-      text: 'For example, someone is waiting for a bone marrow transplant.'
+      text: "For example, they need to be kept in isolation"
     },
     items: [
       {

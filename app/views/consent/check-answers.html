@@ -3,7 +3,7 @@
 {% set buttonText = "Confirm" %}
 {% set basePath = '/' + (vaccine | lower) + '/' %}
 {% set gridClass = 'nhsuk-grid-column-full' %}
-{% set consented = data.consent == 'Yes, I agree' or not data.consent %}
+{% set consented = (data.consent | arrayOrStringIncludes("Yes, I agree")) or not data.consent %}
 
 {% block form %}
   <h1 class="nhsuk-heading-l">{{ title }}</h1>
@@ -13,12 +13,10 @@
   <div class="nhsuk-card">
     <div class="nhsuk-card__content">
       {% set reasonHtml %}
-        <p>
-          {{ d('no-consent-reason') }}
-        </p>
-        <p>
-          {{ d('no-consent-reason-details') }}
-        </p>
+        <p>{{ d('no-consent-reason') }}</p>
+        {% if d('no-consent-reason-details') %}
+          <p>{{ d('no-consent-reason-details') }}</p>
+        {% endif %}
       {% endset %}
 
       {{ summaryList({
@@ -139,33 +137,103 @@
         classes: 'app-summary-list--full-width',
         rows: decorateRows([
           {
+            key: 'Has your child been diagnosed with asthma?',
+            value: {
+              html: d('health.asthma') if d('health.asthma') == 'No' else d('health.asthma') + ' – ' + d('health.asthma-details')
+            },
+            href: basePath + 'consent/health-asthma'
+          },
+          {
+            key: 'Has your child taken any oral steroids for their asthma in the last 2 weeks?',
+            value: {
+              html: d('health.asthma-steroids') if d('health.asthma-steroids') == 'No' else d('health.asthma-steroids') + ' – ' + d('health.asthma-steroids-details')
+            },
+            href: basePath + 'consent/health-asthma-steroids'
+          } if d('health.asthma') == 'Yes',
+          {
+            key: 'Has your child been admitted to intensive care for their asthma?',
+            value: {
+              html: d('health.asthma-admitted') if d('health.asthma-admitted') == 'No' else d('health.asthma-admitted') + ' – ' + d('health.asthma-admitted-details')
+            },
+            href: basePath + 'consent/health-asthma-admitted'
+          } if d('health.asthma') == 'Yes',
+          {
+            key: 'Has your child had a flu vaccination in the last 5 months?',
+            value: {
+              html: d('health.recent-flu-vaccination') if d('health.recent-flu-vaccination') == 'No' else d('health.recent-flu-vaccination') + ' – ' + d('health.recent-flu-vaccination-details')
+            },
+            href: basePath + 'consent/health-recent-flu-vaccination'
+          } if vaccine == 'flu',
+          {
+            key: 'Does your child have a disease or treatment that severely affects their immune system?',
+            value: {
+              html: d('health.immune-system') if d('health.immune-system') == 'No' else d('health.immune-system') + ' – ' + d('health.immune-system-details')
+            },
+            href: basePath + 'consent/health-immune-system'
+          },
+          {
+            key: 'Is anyone in your household currently having treatment that severely affects their immune system?',
+            value: {
+              html: d('health.household-immune-system') if d('health.household-immune-system') == 'No' else d('health.household-immune-system') + ' – ' + d('health.household-immune-system-details')
+            },
+            href: basePath + 'consent/health-immune-system'
+          },
+          {
+            key: 'Has your child ever been admitted to intensive care due an allergic reaction to egg?',
+            value: {
+              html: d('health.egg-allergy') if d('health.egg-allergy') == 'No' else d('health.egg-allergy') + ' – ' + d('health.egg-allergy-details')
+            },
+            href: basePath + 'consent/health-egg-allergy'
+          },
+          {
+            key: 'Does your child have any allergies to medication?',
+            value: {
+              html: d('health.medication-allergies') if d('health.medication-allergies') == 'No' else d('health.medication-allergies') + ' – ' + d('health.medication-allergies-details')
+            },
+            href: basePath + 'consent/health-medication-allergies'
+          },
+          {
+            key: 'Has your child ever had a reaction to previous vaccinations?',
+            value: {
+              html: d('health.previous-reaction') if d('health.previous-reaction') == 'No' else d('health.previous-reaction') + ' – ' + d('health.previous-reaction-details')
+            },
+            href: basePath + 'consent/health-previous-reaction'
+          },
+                    {
+            key: 'Does you child take regular aspirin?',
+            value: {
+              html: d('health.aspirin') if d('health.aspirin') == 'No' else d('health.aspirin') + ' – ' + d('health.aspirin-details')
+            },
+            href: basePath + 'consent/health-aspirin'
+          },
+          {
             key: 'Does your child have any severe allergies that have led to an anaphylactic reaction?',
             value: {
               html: d('health.allergy') if d('health.allergy') == 'No' else d('health.allergy') + ' – ' + d('health.allergy-details')
             },
             href: basePath + 'consent/health-allergy'
-          },
+          } if not vaccine == 'flu',
           {
             key: 'Does your child have any existing medical conditions?',
             value: {
               html: d('health.existing-conditions') if d('health.existing-conditions') == 'No' else d('health.existing-conditions') + ' – ' + d('health.existing-conditions-details')
             },
             href: basePath + 'consent/health-existing-conditions'
-          },
+          } if not vaccine == 'flu',
           {
             key: 'Does your child take any regular medication?',
             value: {
               html: d('health.regular-medication') if d('health.regular-medication') == 'No' else d('health.regular-medication') + ' – ' + d('health.regular-medication-details')
             },
             href: basePath + 'consent/health-regular-medication'
-          },
+          } if not vaccine == 'flu',
           {
             key: 'Is there anything else you think we should know?',
             value: {
               html: d('health.anything-else') if d('health.anything-else') == 'No' else d('health.anything-else') + ' – ' + d('health.anything-else-details')
             },
             href: basePath + 'consent/health-anything-else'
-          }
+          } if not vaccine == 'flu'
         ])
       }) }}
     </div>
