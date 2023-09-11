@@ -1,7 +1,7 @@
 {% extends "layouts/wizard.html" %}
 
 {% set title %}
-  {% if vaccine == 'HPV' %}
+  {% if vaccine == "HPV" %}
     Do you agree to them having both doses of the HPV vaccination?
   {% else %}
     Do you agree to them having a nasal flu vaccination?
@@ -18,19 +18,19 @@
       }
     },
     hint: {
-      text: 'Two doses will be given at least 6 months apart'
+      text: "Two doses will be given at least 6 months apart"
     } if vaccine == "HPV",
     hint: {
-      text: 'The nasal flu spray contains gelatine which comes from pigs.'
+      text: "The nasal flu spray contains gelatine which comes from pigs."
     } if vaccine == "flu",
     items: [
       {
-        text: 'Yes, I agree to them having a nasal vaccine'
+        text: "Yes, I agree to them having a nasal vaccine"
       } if vaccine == "flu" else {
-        text: 'Yes, I agree'
+        text: "Yes, I agree"
       },
       {
-        text: 'No'
+        text: "No"
       }
     ],
     decorate: "consent"

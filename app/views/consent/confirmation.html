@@ -1,7 +1,7 @@
 {% extends "layouts/wizard.html" %}
-{% set email = d('parent.email') or 'jane.doe@example.com' %}
-{% set 3in1consent = data['3-in-1-consent'] !== 'No' %}
-{% set menACWYconsent = data['men-acwy-consent'] !== 'No' %}
+{% set email = d("parent.email") or "jane.doe@example.com" %}
+{% set 3in1consent = data["3-in-1-consent"] !== "No" %}
+{% set menACWYconsent = data["men-acwy-consent"] !== "No" %}
 {% set consentForBoth = 3in1consent and menACWYconsent %}
 
 {% set title %}
