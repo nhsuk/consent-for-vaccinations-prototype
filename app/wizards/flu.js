@@ -32,7 +32,7 @@ export function fluWizard (req) {
     ...consentedNasal
       ? {
           '/flu/consent/health-asthma': {
-            '/health-recent-flu-vaccination': {
+            '/flu/consent/health-recent-flu-vaccination': {
               data: 'health.asthma',
               value: 'No'
             }
