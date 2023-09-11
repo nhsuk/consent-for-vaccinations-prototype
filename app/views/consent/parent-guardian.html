@@ -12,7 +12,6 @@
   }) }}
 
   {% set other %}
-    <p>You need parental responsibility to give consent. This means you have legal rights and duties relating to the child.</p>
     {{ input({
       label: {
         text: "Relationship to the child"
@@ -21,6 +20,22 @@
         text: "For example, carer"
       },
       decorate: "parent.relationship-other"
+    }) }}
+
+    {{ radios({
+      fieldset: {
+        legend: {
+          text: "Do you have parental responsibility?"
+        }
+      },
+      hint: {
+        text: "This means you have legal rights and duties relating to the child"
+      },
+      items: [
+        { text: "Yes" },
+        { text: "No" }
+      ],
+      decorate: "parent.has-responsibility"
     }) }}
   {% endset %}
 
