@@ -9,6 +9,12 @@ export const fluRoutes = router => {
     res.locals.vaccine = 'flu'
     res.locals.secondary = false
     res.locals.paths = fluWizard(req)
+
+    // Change answer
+    if (req.query.change) {
+      res.locals.paths.next = '/flu/consent/check-answers'
+    }
+
     next()
   })
 
