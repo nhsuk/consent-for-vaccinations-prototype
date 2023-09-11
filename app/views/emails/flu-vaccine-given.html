@@ -1,0 +1,34 @@
+{% extends "layouts/email.html" %}
+{% set subject = "Your child has had their flu vaccination" %}
+{% set name = parent.name or "Jane Doe" %}
+{% set from = "School vaccinations <school.vaccinations@nhs.net>" %}
+
+{% block email %}
+  <p>Dear {{ name }},</p>
+
+  <p>{{ childName }} had their flu vaccination at Boringdon Primary School today. They were very brave.</p>
+
+  <p>We suggest you record the following details in their red book (also known as their personal child health record):</p>
+
+  <ul class="govuk-list govuk-list--bullet">
+    <li>Vaccination: Seasonal flu</li>
+    <li>Vaccine: Fluenz Tetra</li>
+    <li>Date of vaccination: 8 November 2023</li>
+    <li>Batch number: PH3539</li>
+  </ul>
+
+  <h2 class="nhsuk-heading-m">Your child might have some side effects</h2>
+
+  <p>Your child might have some of the following side effects:</p>
+
+  <ul class="govuk-list govuk-list--bullet">
+    <li>a runny or blocked nose</li>
+    <li>a headache</li>
+    <li>general tiredness</li>
+    <li>loss of appetite</li>
+  </ul>
+
+  <p>If you’re concerned about your child’s reaction to the vaccine, contact your GP in the usual way.</p>
+
+  <p>The child health team</p>
+{% endblock %}
