@@ -40,19 +40,19 @@
     },
     items: [
       {
-        text: 'Yes',
+        text: "Yes",
         conditional: {
           html: otherNameHtml
         }
       },
       {
-        text: 'No'
+        text: "No"
       }
     ],
     decorate: "child.preferred-name-choice"
   }) }}
 
-  {% if false and vaccine == 'HPV' %}
+  {% if false and vaccine == "HPV" %}
     {{ radios({
       fieldset: {
         legend: {
@@ -61,13 +61,13 @@
       },
       items: [
         {
-          text: 'Female'
+          text: "Female"
         },
         {
-          text: 'Male'
+          text: "Male"
         },
         {
-          text: 'Prefer not to say'
+          text: "Prefer not to say"
         }
       ],
       decorate: "child.sex"

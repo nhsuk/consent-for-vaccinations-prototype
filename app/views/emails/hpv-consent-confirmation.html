@@ -1,6 +1,6 @@
 {% extends "layouts/email.html" %}
 {% set subject = "Your child will get the HPV vaccine on 6 June" %}
-{% set name = parent.name or 'Jane Doe' %}
+{% set name = parent.name or "Jane Doe" %}
 {% set from = "School vaccinations <school.vaccinations@nhs.net>" %}
 
 {% block email %}
@@ -19,5 +19,5 @@
   </ul>
 
   {% set hideContactHeading = true %}
-  {% include 'emails/_contact.html' %}
+  {% include "emails/_contact.html" %}
 {% endblock %}

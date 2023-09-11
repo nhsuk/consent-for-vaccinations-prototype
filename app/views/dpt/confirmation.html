@@ -34,15 +34,15 @@
       {
         key: { text: "Vaccine" },
         value: { text: "Nasal flu vaccination" }
-      } if vaccine == 'flu',
+      } if vaccine == "flu",
       {
         key: { text: "Vaccine" },
         value: { text: "HPV vaccination (1st dose)" }
-      } if vaccine == 'HPV'
+      } if vaccine == "HPV"
     ])
   }) }}
 
-  {% if vaccine == 'HPV' %}
+  {% if vaccine == "HPV" %}
     <p>We’ll let you know when the 2nd dose will be given.</p>
   {% endif %}
 
@@ -61,20 +61,20 @@
     },
     items: [
       {
-        text: 'Yes'
+        text: "Yes"
       },
       {
-        text: 'No'
+        text: "No"
       },
       {
-        text: 'I don’t know'
+        text: "I don’t know"
       }
     ],
     decorate: "consent"
   }) }}
 
   {{ button({
-    text: 'Continue'
+    text: "Continue"
   }) }}
 
 {% endblock %}
