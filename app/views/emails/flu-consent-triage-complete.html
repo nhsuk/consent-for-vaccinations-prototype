@@ -1,0 +1,31 @@
+{% extends "layouts/email.html" %}
+{% set subject = "Your child can have a flu vaccination on 24 November" %}
+{% set name = parent.name or "Jane Doe" %}
+{% set from = "School vaccinations <school.vaccinations@nhs.net>" %}
+
+{% block email %}
+  <p>Dear {{ name }},</p>
+
+  <p>Thanks for answering the health questions about {{ childName }}. Our nurses have confirmed it’s safe for {{ childName.split(" ") | first }} to have the nasal flu vaccination.</p>
+
+  <p>This will take place at Boringdon Primary School on Monday 24 November.</p>
+
+  <p>We’ll let you know once Jamie is vaccinated.</p>
+
+  <p>If {{ childName.split(" ") | first }}’s health changes, or you arrange to have the vaccination elsewhere, please get in touch. You can email example@nhs.uk or call 01234 321456.</p>
+
+  <p>The child health team</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% endblock %}
