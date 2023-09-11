@@ -1,5 +1,5 @@
 {% extends "layouts/wizard.html" %}
-{% set title = "Does you child take regular aspirin?" %}
+{% set title = "Does your child have any allergies to medication?" %}
 
 {% block form %}
   {% set html %}
@@ -7,7 +7,7 @@
       label: {
         text: "Give details"
       },
-      decorate: "health.aspirin-details"
+      decorate: "health.medication-allergies-details"
     }) }}
   {% endset %}
 
@@ -19,9 +19,6 @@
         isPageHeading: true
       }
     },
-    hint: {
-      text: "Also known as Salicylate therapy"
-    },
     items: [
       {
         text: 'Yes',
@@ -29,8 +26,8 @@
           html: html
         }
       },
-      { text: 'No' }
+      { text: "No" }
     ],
-    decorate: "health.aspirin"
+    decorate: "health.medication-allergies"
   }) }}
 {% endblock %}

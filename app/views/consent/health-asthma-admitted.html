@@ -1,5 +1,5 @@
 {% extends "layouts/wizard.html" %}
-{% set title = "Does you child take regular aspirin?" %}
+{% set title = "Has your child been admitted to intensive care for their asthma?" %}
 
 {% block form %}
   {% set html %}
@@ -7,7 +7,7 @@
       label: {
         text: "Give details"
       },
-      decorate: "health.aspirin-details"
+      decorate: "health.asthma-admitted-details"
     }) }}
   {% endset %}
 
@@ -19,18 +19,15 @@
         isPageHeading: true
       }
     },
-    hint: {
-      text: "Also known as Salicylate therapy"
-    },
     items: [
       {
-        text: 'Yes',
+        text: "Yes",
         conditional: {
           html: html
         }
       },
-      { text: 'No' }
+      { text: "No" }
     ],
-    decorate: "health.aspirin"
+    decorate: "health.asthma-admitted"
   }) }}
 {% endblock %}

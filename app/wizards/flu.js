@@ -29,22 +29,25 @@ export function fluWizard (req) {
     },
     '/flu/consent/child-gp': {},
     '/flu/consent/address': {},
-    '/flu/consent/health-immune-system': {},
     ...consentedNasal
       ? {
-          '/flu/consent/health-household-immune-system': {},
           '/flu/consent/health-asthma': {
-            '/flu/consent/health-egg-allergy': {
+            '/health-recent-flu-vaccination': {
               data: 'health.asthma',
               value: 'No'
             }
           },
           '/flu/consent/health-asthma-steroids': {},
-          '/flu/consent/health-aspirin': {}
+          '/flu/consent/health-asthma-admitted': {}
         }
       : {},
+    '/flu/consent/health-recent-flu-vaccination': {},
+    '/flu/consent/health-immune-system': {},
+    '/flu/consent/health-household-immune-system': {},
     '/flu/consent/health-egg-allergy': {},
-    '/flu/consent/health-anything-else': {},
+    '/flu/consent/health-medication-allergies': {},
+    '/flu/consent/health-previous-reaction': {},
+    '/flu/consent/health-aspirin': {},
     '/flu/consent/check-answers': {
       '/flu/consent/confirmation-no-consent': !consentedNasal && !consentedJabContact,
       '/flu/confirmation-jab-contact': !consentedNasal && consentedJabContact,
