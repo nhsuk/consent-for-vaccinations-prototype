@@ -76,42 +76,40 @@
     decorate: "parent.telephone"
   }) }}
 
-  {% set accessibilityOptions %}
-    {% set otherHtml %}
-      {{ textarea({
-        label: {
-          text: "Give details"
-        },
-        rows: 5,
-        formGroup: {
-          classes: "nhsuk-u-margin-bottom-0"
-        },
-        decorate: "parent.accessibility-other"
-      }) }}
-    {% endset %}
-
-    {{ radios({
-      fieldset: {
-        legend: {
-          text: "Do you need any of the following?"
-        }
+  {% set otherHtml %}
+    {{ textarea({
+      label: {
+        text: "Give details"
       },
-      items: [
-        { text: "Text only (no voice calls)" },
-        { text: "Voice only (no text)" },
-        {
-          text: "Other",
-          conditional: {
-            html: otherHtml
-          }
-        }
-      ],
-      decorate: "parent.accessibility"
+      rows: 5,
+      formGroup: {
+        classes: "nhsuk-u-margin-bottom-0"
+      },
+      decorate: "parent.accessibility-other"
     }) }}
   {% endset %}
 
-  {{ details({
-    text: "I need to tell you more about how to contact me",
-    HTML: accessibilityOptions
+  {{ radios({
+    fieldset: {
+      legend: {
+        text: "Telephone contact method"
+      }
+    },
+    hint: {
+      text: "Tell us if you have specific needs"
+    },
+    items: [
+      { text: "I can only receive text messages" },
+      { text: "I can only receive voice calls" },
+      {
+        text: "Other",
+        conditional: {
+          html: otherHtml
+        }
+      },
+      { divider: "or" },
+      { text: "I do not have specific needs" }
+    ],
+    decorate: "parent.accessibility"
   }) }}
 {% endblock %}
