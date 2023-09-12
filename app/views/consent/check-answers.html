@@ -121,14 +121,18 @@
           },
           {
             key: "Telephone number",
-            data: "parent.telephone",
+            value: {
+              text: data.parent.telephone | default("Not provided", true)
+            },
             href: basePath + "consent/parent-guardian?change=true"
           },
           {
             key: "Telephone contact method",
-            data: "parent.accessibility",
-            href: basePath + "consent/parent-guardian?change=true"
-          }
+            value: {
+              text: d("parent.accessibility") + " – " + d("parent.accessibility-details") if d("parent.accessibility") == "Other" else data.parent.accessibility | default("Not provided", true)
+            },
+            href: basePath + "consent/telephone-contact-method?change=true"
+          } if data.parent.telephone
         ])
       }) }}
     </div>

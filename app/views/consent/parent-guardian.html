@@ -68,48 +68,11 @@
 
   {{ input({
     label: {
-      text: "Telephone number"
+      text: "Telephone number (optional)"
     },
     hint: {
       text: "A nurse might call you about your child’s vaccination"
     },
     decorate: "parent.telephone"
-  }) }}
-
-  {% set otherHtml %}
-    {{ textarea({
-      label: {
-        text: "Give details"
-      },
-      rows: 5,
-      formGroup: {
-        classes: "nhsuk-u-margin-bottom-0"
-      },
-      decorate: "parent.accessibility-other"
-    }) }}
-  {% endset %}
-
-  {{ radios({
-    fieldset: {
-      legend: {
-        text: "Telephone contact method"
-      }
-    },
-    hint: {
-      text: "Tell us if you have specific needs"
-    },
-    items: [
-      { text: "I can only receive text messages" },
-      { text: "I can only receive voice calls" },
-      {
-        text: "Other",
-        conditional: {
-          html: otherHtml
-        }
-      },
-      { divider: "or" },
-      { text: "I do not have specific needs" }
-    ],
-    decorate: "parent.accessibility"
   }) }}
 {% endblock %}
