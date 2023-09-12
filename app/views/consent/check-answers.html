@@ -2,7 +2,6 @@
 {% set title = "Check your answers and confirm" %}
 {% set buttonText = "Confirm" %}
 {% set basePath = "/" + (vaccine | lower) + "/" %}
-{% set gridClass = "nhsuk-grid-column-full" %}
 {% set consented = (data.consent and data.consent | arrayOrStringIncludes("Yes, I agree")) or not data.consent %}
 
 {% block form %}
