@@ -1,0 +1,43 @@
+{% extends "layouts/wizard.html" %}
+{% set title = "Telephone contact method" %}
+
+{% block form %}
+  {% set html %}
+    {{ textarea({
+      label: {
+        text: "Give details"
+      },
+      rows: 5,
+      formGroup: {
+        classes: "nhsuk-u-margin-bottom-0"
+      },
+      decorate: "parent.accessibility-details"
+    }) }}
+  {% endset %}
+
+  {{ radios({
+    fieldset: {
+      legend: {
+        classes: "nhsuk-fieldset__legend--l",
+        text: title,
+        isPageHeading: true
+      }
+    },
+    hint: {
+      text: "Tell us if you have specific needs"
+    },
+    items: [
+      { text: "I can only receive text messages" },
+      { text: "I can only receive voice calls" },
+      {
+        text: "Other",
+        conditional: {
+          html: html
+        }
+      },
+      { divider: "or" },
+      { text: "I do not have specific needs" }
+    ],
+    decorate: "parent.accessibility"
+  }) }}
+{% endblock %}

@@ -68,50 +68,11 @@
 
   {{ input({
     label: {
-      text: "Telephone number"
+      text: "Telephone number (optional)"
     },
     hint: {
       text: "A nurse might call you about your child’s vaccination"
     },
     decorate: "parent.telephone"
-  }) }}
-
-  {% set accessibilityOptions %}
-    {% set otherHtml %}
-      {{ textarea({
-        label: {
-          text: "Give details"
-        },
-        rows: 5,
-        formGroup: {
-          classes: "nhsuk-u-margin-bottom-0"
-        },
-        decorate: "parent.accessibility-other"
-      }) }}
-    {% endset %}
-
-    {{ radios({
-      fieldset: {
-        legend: {
-          text: "Do you need any of the following?"
-        }
-      },
-      items: [
-        { text: "Text only (no voice calls)" },
-        { text: "Voice only (no text)" },
-        {
-          text: "Other",
-          conditional: {
-            html: otherHtml
-          }
-        }
-      ],
-      decorate: "parent.accessibility"
-    }) }}
-  {% endset %}
-
-  {{ details({
-    text: "I need to tell you more about how to contact me",
-    HTML: accessibilityOptions
   }) }}
 {% endblock %}

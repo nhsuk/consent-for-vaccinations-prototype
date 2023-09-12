@@ -18,7 +18,9 @@ export function fluWizard (req) {
       }
     },
     '/flu/consent/parent-guardian': {
-      '/flu/consent/no-parental-responsibility': noParentalResponsibility
+      '/flu/consent/no-parental-responsibility': noParentalResponsibility,
+      '/flu/consent/telephone-contact-method': () =>
+        !noParentalResponsibility && req.session.data.parent.telephone !== ''
     },
     '/flu/consent/consent': {
       '/flu/consent/child-gp': consentedNasal
