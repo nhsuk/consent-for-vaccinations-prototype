@@ -5,6 +5,7 @@ export function fluWizard (req) {
   const consentedNasal = req.session.data.consent !== 'No'
   const consentedJabContact = req.session.data['im-consent'] !== 'No'
   const anyContraindications = checkForContraindications(req.session.data.health)
+  const noParentalResponsibility = req.session.data.parent.relationship === 'Other' && req.session.data.parent['has-responsibility'] === 'No'
 
   const journey = {
     '/flu/start': {},
@@ -16,7 +17,9 @@ export function fluWizard (req) {
         value: 'No, they go to a different school'
       }
     },
-    '/flu/consent/parent-guardian': {},
+    '/flu/consent/parent-guardian': {
+      '/flu/consent/no-parental-responsibility': noParentalResponsibility
+    },
     '/flu/consent/consent': {
       '/flu/consent/child-gp': consentedNasal
     },
