@@ -1,12 +1,12 @@
 {% extends "layouts/email.html" %}
-{% set subject = "Flu vaccination on 24 November" %}
+{% set subject = "Flu vaccination on " + (sessionDate | date("d MMMM")) %}
 {% set name = parent.name or "Jane Doe" %}
 {% set from = "School vaccinations <school.vaccinations@nhs.net>" %}
 
 {% block email %}
   <p>Dear {{ name }},</p>
 
-  <p>You’ve told us you do not want {{ childName }} to have their flu vaccination at Boringdon Primary School on Monday 24 November.</p>
+  <p>You’ve told us you do not want {{ childName }} to have their flu vaccination at {{ sessionSchool }} on {{ sessionDate | date("cccc d MMMM") }}.</p>
 
   <p>If you change your mind, please get in touch with us. You can email example@nhs.uk or call 01234 321456.</p>
 

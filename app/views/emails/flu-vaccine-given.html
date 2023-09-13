@@ -6,14 +6,17 @@
 {% block email %}
   <p>Dear {{ name }},</p>
 
-  <p>{{ childName }} had their flu vaccination at Boringdon Primary School today. They were very brave.</p>
+  <p>
+    {{ childName }} had their flu vaccination at {{ sessionSchool }} today.
+    {% if primary %}They were very brave.{% endif %}
+  </p>
 
   <p>We suggest you record the following details in their red book (also known as their personal child health record):</p>
 
   <ul class="govuk-list govuk-list--bullet">
     <li>Vaccination: Seasonal flu</li>
     <li>Vaccine: Fluenz Tetra</li>
-    <li>Date of vaccination: 8 November 2023</li>
+    <li>Date of vaccination: {{ sessionDate | govukDate }}</li>
     <li>Batch number: PH3539</li>
   </ul>
 

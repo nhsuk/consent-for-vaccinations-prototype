@@ -6,14 +6,14 @@
 {% block email %}
   <p>Dear {{ name }},</p>
 
-  <p>{{ childName }} got the first dose of their HPV vaccination at Hele’s School today. </p>
+  <p>{{ childName }} got the first dose of their HPV vaccination at {{ sessionSchool }} today. </p>
 
   <p>We suggest you record the following details in their red book (also known as their personal child health record):</p>
 
   <ul class="govuk-list govuk-list--bullet">
     <li>Vaccination: HPV first dose</li>
     <li>Vaccine: Gardasil 9</li>
-    <li>Date of vaccination: 6 June 2023</li>
+    <li>Date of vaccination: {{ sessionDate | govukDate }}</li>
     <li>Batch number: PH3539</li>
   </ul>
 
