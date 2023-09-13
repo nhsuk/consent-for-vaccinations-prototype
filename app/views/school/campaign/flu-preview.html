@@ -18,7 +18,7 @@
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
       <h1 class="nhsuk-heading-xl">
-        <span class="nhsuk-caption-xl">22 November 2022</span>
+        <span class="nhsuk-caption-xl">{{ sessionDate | govukDate }}</span>
         {{ title }}
       </h1>
     </div>
@@ -28,12 +28,12 @@
     <div class="govuk-grid-row nhsuk-u-margin-top-6">
       <div class="govuk-grid-column-two-thirds">
         <p>
-          A local health team are coming to <b>St Mary’s Primary School</b> on Tuesday 22 November 2022 to give flu vaccines.
+          A local health team are coming to <b>St Mary’s Primary School</b> on {{ sessionDate | date("cccc d MMMM") }} to give flu vaccines.
         </p>
 
         <h2 class="nhsuk-heading-m">Please give or refuse consent</h2>
 
-        <p>If you want your child to receive this vaccine at school, you need to give consent by 21 November 2022 (2 days before the vaccination).</p>
+        <p>If you want your child to receive this vaccine at school, you need to give consent by {{ deadlineDate | date("cccc d MMMM") }} (2 days before the vaccination).</p>
 
         <p>
           <a href="/start">Give or refuse consent for the flu vaccination</a>
@@ -70,9 +70,9 @@
 
       <h2 class="nhsuk-heading-m">Preview</h2>
       {{ card({
-        "heading": "Subject: Flu vaccination on 22 November",
-        "headingLevel": "2",
-        "descriptionHtml": html
+        heading: "Subject: Flu vaccination on " + (sessionDate | date("d MMMM")),
+        headingLevel: 2,
+        descriptionHtml: html
       }) }}
     </div>
   </div>

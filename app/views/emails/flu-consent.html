@@ -1,9 +1,9 @@
 {% extends "layouts/email.html" %}
-{% set subject = "Flu vaccination on 24 November" %}
+{% set subject = "Flu vaccination on " + (sessionDate | date("d MMMM")) %}
 {% set from = "School vaccinations <school.vaccinations@nhs.net>" %}
 
 {% block email %}
-  <p>Your local health team are coming to [name of school] on Monday 24 November 2023 to give this year’s flu vaccine.</p>
+  <p>Your local health team are coming to {{ sessionSchool }} on {{ sessionDate | date("cccc d MMMM") }} to give this year’s flu vaccine.</p>
 
   <h2 class="nhsuk-heading-m">What the vaccine is for</h2>
 
@@ -13,7 +13,7 @@
 
   <h2 class="nhsuk-heading-m">Please give or refuse consent</h2>
 
-  <p>If you want your child to get this vaccine at school, you need to give consent by Monday 2 October.</p>
+  <p>If you want your child to get this vaccine at school, you need to give consent by {{ deadlineDate | date("cccc d MMMM") }}.</p>
 
   <p>
     <a href="/flu/start">Give or refuse consent for the flu vaccination</a>

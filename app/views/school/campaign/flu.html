@@ -12,11 +12,11 @@
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
       <h1 class="nhsuk-heading-xl">
-        <span class="nhsuk-caption-xl">22 November 2022</span>
+        <span class="nhsuk-caption-xl">{{ sessionDate | govukDate }}</span>
         {{ title }}
       </h1>
 
-      <p>East Sussex SAIS team are running a flu vaccine clinic at your school on 24 November 2022.</p>
+      <p>East Sussex SAIS team are running a flu vaccine clinic at your school on {{ sessionDate | govukDate }}.</p>
 
       <p>You need to send a consent request for each eligible child. This might be by email, text message or paper form.</p>
 

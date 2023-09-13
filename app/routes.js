@@ -13,6 +13,11 @@ router.all('*', (req, res, next) => {
   } else {
     res.locals.childName = 'Bobby Doe'
   }
+
+  res.locals.deadlineDate = '2023-11-24'
+  res.locals.sessionDate = '2023-11-27'
+  res.locals.sessionSchool = res.locals.secondary ? 'Hele’s Secondary School' : 'St Mary’s Primary School'
+
   next()
 })
 

@@ -1,5 +1,5 @@
 {% extends "layouts/email.html" %}
-{% set subject = "Your child can have a flu vaccination on 24 November" %}
+{% set subject = "Your child can have a flu vaccination on " + (sessionDate | date("d MMMM")) %}
 {% set name = parent.name or "Jane Doe" %}
 {% set from = "School vaccinations <school.vaccinations@nhs.net>" %}
 
@@ -8,9 +8,9 @@
 
   <p>Thanks for answering the health questions about {{ childName }}. Our nurses have confirmed it’s safe for {{ childName.split(" ") | first }} to have the nasal flu vaccination.</p>
 
-  <p>This will take place at Boringdon Primary School on Monday 24 November.</p>
+  <p>This will take place at {{ sessionSchool }} on {{ sessionDate | date("cccc d MMMM") }}.</p>
 
-  <p>We’ll let you know once Jamie is vaccinated.</p>
+  <p>We’ll let you know once {{ childName.split(" ") | first }} is vaccinated.</p>
 
   <p>If {{ childName.split(" ") | first }}’s health changes, or you arrange to have the vaccination elsewhere, please get in touch. You can email example@nhs.uk or call 01234 321456.</p>
 
