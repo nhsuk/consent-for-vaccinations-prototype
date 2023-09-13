@@ -119,14 +119,14 @@
             href: basePath + "consent/parent-guardian?change=true"
           },
           {
-            key: "Telephone number",
+            key: "Phone number",
             value: {
               text: data.parent.telephone | default("Not provided", true)
             },
             href: basePath + "consent/parent-guardian?change=true"
           },
           {
-            key: "Telephone contact method",
+            key: "Phone contact method",
             value: {
               text: d("parent.accessibility") + " – " + d("parent.accessibility-details") if d("parent.accessibility") == "Other" else data.parent.accessibility | default("Not provided", true)
             },
