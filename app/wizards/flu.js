@@ -6,6 +6,7 @@ export function fluWizard (req) {
   const consentedJabContact = req.session.data['im-consent'] !== 'No'
   const anyContraindications = checkForContraindications(req.session.data.health)
   const noParentalResponsibility = req.session.data.parent?.relationship === 'Other' && req.session.data.parent['has-responsibility'] === 'No'
+  const haveTelephone = req.session.data.parent?.telephone !== ''
 
   const journey = {
     '/flu/start': {},
@@ -18,10 +19,13 @@ export function fluWizard (req) {
       }
     },
     '/flu/consent/parent-guardian': {
-      '/flu/consent/no-parental-responsibility': noParentalResponsibility,
-      '/flu/consent/telephone-contact-method': () =>
-        !noParentalResponsibility && req.session.data.parent?.telephone !== ''
+      '/flu/consent/no-parental-responsibility': noParentalResponsibility
     },
+    ...haveTelephone
+      ? {
+          '/flu/consent/telephone-contact-method': {}
+        }
+      : {},
     '/flu/consent/consent': {
       '/flu/consent/child-gp': consentedNasal
     },
