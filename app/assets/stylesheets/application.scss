@@ -1,9 +1,10 @@
 // GOV.UK Frontend options
+$govuk-font-family: "Frutiger W01", arial, sans-serif;
 $govuk-global-styles: false;
 $govuk-new-link-styles: true;
 $govuk-assets-path: "/govuk/assets/";
 
-@import 'node_modules/nhsuk-frontend/packages/nhsuk';
+@import "node_modules/nhsuk-frontend/packages/nhsuk";
 
 // Import GOV.UK Frontend
 @import "govuk-frontend/govuk/all";
@@ -19,14 +20,8 @@ $govuk-assets-path: "/govuk/assets/";
   max-width: none;
 }
 
-.app-u-frutiger,
-.app-u-frutiger * {
-  font-family: "Frutiger W01", Arial, sans-serif;
-}
-
 .app-panel h1 {
-  @include govuk-font(36, $weight: bold);
-  font-family: "Frutiger W01", Arial, sans-serif;
+  @include nhsuk-font(32, $weight: bold);
 }
 
 .app-summary-list--full-width {
