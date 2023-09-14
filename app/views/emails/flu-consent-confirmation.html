@@ -8,6 +8,8 @@
 
   <p>You’ve agreed for {{ childName }} to have their flu vaccination at {{ sessionSchool }} on {{ sessionDate | date("cccc d MMMM") }}.</p>
 
+  <p>Please tell {{ childName.split(" ") | first }} that they’ll be vaccinated on this date.</p>
+
   <p>We’ll let you know once they’re vaccinated.</p>
 
   <p>If {{ childName.split(" ") | first }}’s health changes, or you arrange to have the vaccination elsewhere, please get in touch. You can email example@nhs.uk or call 01234 321456.</p>
