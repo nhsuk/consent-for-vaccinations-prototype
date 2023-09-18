@@ -6,17 +6,17 @@
 
 {% set title %}
   {% if vaccine == "HPV" %}
-    Your child will get their first HPV vaccination at school on {{ sessionDate | govukDate }}
+    {{ childName }} will get their first HPV vaccination at school on {{ sessionDate | govukDate }}
   {% elseif vaccine == "DPT" %}
     {% if consentForBoth %}
-      Your child will get their 3-in-1 teenage booster and MenACWY vaccinations at school on {{ sessionDate | govukDate }}
+      {{ childName }} will get their 3-in-1 teenage booster and MenACWY vaccinations at school on {{ sessionDate | govukDate }}
     {% elseif 3in1consent %}
-      Your child will get their 3-in-1 teenage booster at school on {{ sessionDate | govukDate }}
+      {{ childName }} will get their 3-in-1 teenage booster at school on {{ sessionDate | govukDate }}
     {% elseif menACWYconsent %}
-      Your child will get their MenACWY vaccination at school on {{ sessionDate | govukDate }}
+      {{ childName }} will get their MenACWY vaccination at school on {{ sessionDate | govukDate }}
     {% endif %}
   {% else %}
-    Your child will get their nasal flu vaccination at school on {{ sessionDate | govukDate }}
+    {{ childName }} will get their nasal flu vaccination at school on {{ sessionDate | govukDate }}
   {% endif %}
 {% endset %}
 
