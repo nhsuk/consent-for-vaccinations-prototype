@@ -15,13 +15,12 @@
 
 {% block header %}
   {{ header({
-    service: {
+    transactionalService: {
       name: serviceName,
       href: "/"
     },
     showNav: "false",
-    showSearch: "false",
-    containerClasses: "nhsuk-width-container"
+    showSearch: "false"
   }) }}
 {% endblock %}
 
