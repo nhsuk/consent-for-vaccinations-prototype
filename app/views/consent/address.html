@@ -2,39 +2,45 @@
 {% set title = "Home address" %}
 
 {% block form %}
-  <h1 class="nhsuk-heading-l">{{ title }}</h1>
+  {% call fieldset({
+    legend: {
+      text: title,
+      classes: "nhsuk-fieldset__legend--l",
+      isPageHeading: true
+    }
+  }) %}
+    {{ input({
+      label: {
+        text: "Address line 1"
+      },
+      decorate: "address.line1",
+      autocomplete: "address-line1"
+    }) }}
 
-  {{ input({
-    label: {
-      text: "Address line 1"
-    },
-    decorate: "address.line1",
-    autocomplete: "address-line1"
-  }) }}
+    {{ input({
+      label: {
+        text: "Address line 2 (optional)"
+      },
+      decorate: "address.line2",
+      autocomplete: "address-line2"
+    }) }}
 
-  {{ input({
-    label: {
-      text: "Address line 2 (optional)"
-    },
-    decorate: "address.line2",
-    autocomplete: "address-line2"
-  }) }}
+    {{ input({
+      label: {
+        text: "Town or city"
+      },
+      decorate: "address.level2",
+      classes: "nhsuk-!-width-two-thirds",
+      autocomplete: "address-level2"
+    }) }}
 
-  {{ input({
-    label: {
-      text: "Town or city"
-    },
-    decorate: "address.level2",
-    classes: "nhsuk-!-width-two-thirds",
-    autocomplete: "address-level2"
-  }) }}
-
-  {{ input({
-    label: {
-      text: "Postcode"
-    },
-    decorate: "address.postal-code",
-    classes: "nhsuk-input--width-10",
-    autocomplete: "postal-code"
-  }) }}
+    {{ input({
+      label: {
+        text: "Postcode"
+      },
+      decorate: "address.postal-code",
+      classes: "nhsuk-input--width-10",
+      autocomplete: "postal-code"
+    }) }}
+  {% endcall %}
 {% endblock %}
