@@ -16,10 +16,6 @@ $govuk-assets-path: "/govuk/assets/";
 @import "unbranded";
 @import "email";
 
-.nhsuk-header__service-name {
-  max-width: none;
-}
-
 .app-panel h1 {
   @include nhsuk-font(32, $weight: bold);
 }
