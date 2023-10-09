@@ -8,9 +8,22 @@
 
   <p>This is a quick reminder that {{ childName }} will get their flu vaccination at {{ sessionSchool }} on {{ sessionDate | date("cccc d MMMM") }}.</p>
 
-  <p>If you haven’t already told {{ childName.split(" ") | first }} that they’ll be vaccinated on this date, please do so.</p>
+  <p>If you haven’t already told {{ childName.split(" ") | first }} that they’ll be vaccinated on this date, please let them know what to expect.</p>
 
   <p>If {{ childName.split(" ") | first }}’s health changes, or you arrange to have the vaccination elsewhere, please get in touch. You can email example@nhs.uk or call 01234 321456.</p>
+
+  <h2 class="nhsuk-heading-m">Possible side effects</h2>
+
+  <p>{{ childName.split(" ") | first }} might have some of the following side effects after their vaccination:</p>
+
+  <ul>
+    <li>a runny or blocked nose</li>
+    <li>a headache</li>
+    <li>general tiredness</li>
+    <li>loss of appetite</li>
+  </ul>
+
+  <p>If you’re concerned about your child’s reaction, contact your GP in the usual way.</p>
 
   <p>The child health team</p>
 {% endblock %}
