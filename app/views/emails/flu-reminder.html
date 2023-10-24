@@ -5,7 +5,9 @@
 {% block email %}
   <p>We wrote to you recently about a visit by a local health team to {{ sessionSchool }} on {{ sessionDate | date("cccc d MMMM") }}.</p>
 
-  <p>If you want your child to get the flu vaccine during this visit, you need to give consent by {{ deadlineDate | date("cccc d MMMM") }}.</p>
+  <p>If you want your child to get the flu vaccination during this visit, you need to give consent by {{ deadlineDate | date("cccc d MMMM") }}.</p>
+
+  <p>The vaccination is a quick and painless spray up the nose. Even if your child had the vaccine last year, the type of flu can vary each winter, so we recommend they have it again this year.</p>
 
   <p>
     <a href="/flu/start">Give or refuse consent for the flu vaccination</a>
@@ -20,6 +22,10 @@
   <p>The nasal spray contains gelatine. If your child does not use gelatine products, they could have an injection instead.</p>
 
   <p><a href="https://www.nhs.uk/conditions/vaccinations/child-flu-vaccine/">Find out more about the flu vaccine on NHS.UK</a></p>
+
+  <h2 class="nhsuk-heading-m">If you have trouble using the online form</h2>
+
+  <p>If you have any trouble using the online form, you can respond over the phone using the contact details below.</p>
 
   {% include "emails/_contact.html" %}
 {% endblock %}
