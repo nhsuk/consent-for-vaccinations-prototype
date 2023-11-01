@@ -62,10 +62,15 @@
             href: basePath + "consent/child?change=true"
           },
           {
-            key: "Also known as",
-            data: "child.preferred-name",
+            key: "Preferred first name",
+            data: "child.preferred-firstname",
             href: basePath + "consent/child?change=true"
-          } if d("child.preferred-name"),
+          } if d("child.preferred-firstname"),
+          {
+            key: "Preferred last name",
+            data: "child.preferred-lastname",
+            href: basePath + "consent/child?change=true"
+          } if d("child.preferred-lastname"),
           {
             key: "Date of birth",
             value: d("child.dob") | isoDateFromDateInput | govukDate,
