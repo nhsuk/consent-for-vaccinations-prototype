@@ -26,9 +26,16 @@
   {% set otherNameHtml %}
     {{ input({
       label: {
-        text: "Known as"
+        text: "Preferred first name (optional)"
       },
-      decorate: "child.preferred-name"
+      decorate: "child.preferred-firstname"
+    }) }}
+
+    {{ input({
+      label: {
+        text: "Preferred last name (optional)"
+      },
+      decorate: "child.preferred-lastname"
     }) }}
   {% endset %}
 
