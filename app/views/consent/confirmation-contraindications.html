@@ -25,9 +25,13 @@
 {% block form %}
   <h1 class="nhsuk-heading-l">{{ title }}</h1>
 
-  <p>A member of our health team will be in touch to discuss your answers to the health questions.</p>
-
-  <p>Our health team will confirm if your child will get their {% if vaccine == "DPT" and consentForBoth %}vaccinations{% else %}vaccination{% endif %} at school.</p>
+  <p>As you answered ‘yes’ to some of the health questions, we need to check
+  the {% if vaccine == "DPT" and consentForBoth %}
+    vaccinations are
+  {% else %}
+    vaccination is
+  {% endif %} suitable for {{ childName }}. We’ll review your answers and
+  get in touch again soon.</p>
 
   <p>We’ve sent confirmation of your consent to jane.doe@example.com.</p>
 {% endblock %}
