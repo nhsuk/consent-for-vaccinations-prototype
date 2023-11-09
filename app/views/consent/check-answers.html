@@ -131,6 +131,13 @@
             href: basePath + "consent/parent-guardian?change=true"
           },
           {
+            key: "Get updates by text message",
+            value: {
+              text: "Yes" if data.parent.sms else "No"
+            },
+            href: basePath + "consent/parent-guardian?change=true"
+          },
+          {
             key: "Phone contact method",
             value: {
               text: d("parent.accessibility") + " – " + d("parent.accessibility-details") if d("parent.accessibility") == "Other" else data.parent.accessibility | default("Not provided", true)

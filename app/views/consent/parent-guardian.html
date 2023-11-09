@@ -78,4 +78,13 @@
     },
     decorate: "parent.telephone"
   }) }}
+
+  {{ checkboxes({
+    items: [
+      {
+        text: "Tick this box if you'd like to get updates by text message"
+      }
+    ],
+    decorate: "parent.sms"
+  }) }}
 {% endblock %}
