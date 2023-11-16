@@ -7,8 +7,14 @@ export const hpvRoutes = router => {
     '/hpv/consent/:view'
   ], (req, res, next) => {
     res.locals.vaccine = 'HPV'
-    res.locals.secondary = true
+    res.locals.sessionSchool = 'Hele’s Secondary School'
     res.locals.paths = hpvWizard(req)
+
+    // Change answer
+    if (req.query.change) {
+      res.locals.paths.next = '/hpv/consent/check-answers'
+    }
+
     next()
   })
 
