@@ -1,12 +1,12 @@
 {% extends "layouts/email.html" %}
-{% set subject = "Your child got their first dose of the HPV vaccine" %}
+{% set subject = "Your child got the HPV vaccine today" %}
 {% set name = parent.name or "Jane Doe" %}
 {% set from = "School vaccinations <school.vaccinations@nhs.net>" %}
 
 {% block email %}
   <p>Dear {{ name }},</p>
 
-  <p>{{ childName }} got the first dose of their HPV vaccination at {{ sessionSchool }} today. </p>
+  <p>{{ childName }} got their HPV vaccination at {{ sessionSchool }} today.</p>
 
   <p>We suggest you record the following details in their red book (also known as their personal child health record):</p>
 

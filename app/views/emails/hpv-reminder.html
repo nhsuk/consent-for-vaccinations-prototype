@@ -5,15 +5,9 @@
 {% block email %}
   <p>We wrote to you recently about a visit by a local health team to {{ sessionSchool }} on {{ sessionDate | date("cccc d MMMM") }}.</p>
 
-  <p>If you want your child to receive an HPV vaccine during this visit, you need to give consent by {{ deadlineDate | date("cccc d MMMM") }}.</p>
+  <p>If you want your child to get the HPV vaccine during this visit, you need to give consent by {{ deadlineDate | date("cccc d MMMM") }}.</p>
 
-  <p>
-    <a href="/hpv/start">Give or refuse consent for the HPV vaccination</a>
-  </p>
-
-  <p>This will take less than 5 minutes. If you do not give consent, it’s still important for you to respond.</p>
-
-  <h2 class="nhsuk-heading-m">About the HPV vaccine</h2>
+  <h2 class="nhsuk-heading-m">What the vaccine is for</h2>
 
   <p>The HPV vaccine helps protect against cancers caused by HPV, including:</p>
 
@@ -27,16 +21,27 @@
 
   <p>The HPV vaccine works best if it’s given before young people become sexually active.</p>
 
-  <p>Girls and boys in England are offered the 1st HPV vaccination when they’re in Year 8. The 2nd dose is offered 6 to 24 months later.</p>
+  <h2 class="nhsuk-heading-m">Please give or refuse consent</h2>
 
-  <p>It’s important to have both doses of the vaccine to be properly protected.</p>
+  <p>
+    <a href="/hpv/start">Give or refuse consent for the HPV vaccination</a>
+  </p>
+
+  <p>Responding will take less than 5 minutes. If you do not give consent, it’s still important for you to let us know.</p>
+
+  <h2 class="nhsuk-heading-m">About the HPV vaccine</h2>
+
+  <p>Girls and boys in England are offered the HPV vaccination when they’re in Year 8. Young people usually only need 1 dose.</p>
 
   <p><a href="https://www.nhs.uk/conditions/vaccinations/hpv-human-papillomavirus-vaccine/">Find out more about the HPV vaccine on NHS.UK</a></p>
-
 
   <h2 class="nhsuk-heading-m">Talk to your child about what they want</h2>
 
   <p>We suggest you talk to your child about the vaccine before you respond to us. If they want to have the vaccine, they have the right to request this themselves.</p>
+
+  <h2 class="nhsuk-heading-m">If you have trouble using the online form</h2>
+
+  <p>If you have any trouble using the online form, you can respond over the phone using the contact details below.</p>
 
   {% include "emails/_contact.html" %}
 {% endblock %}
