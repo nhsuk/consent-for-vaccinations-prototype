@@ -34,14 +34,10 @@
       } if vaccine == "flu",
       {
         key: { text: "Vaccine" },
-        value: { text: "HPV vaccination (1st dose)" }
+        value: { text: "HPV vaccination" }
       } if vaccine == "HPV"
     ])
   }) }}
-
-  {% if vaccine == "HPV" %}
-    <p>We’ll let you know when the 2nd dose will be given.</p>
-  {% endif %}
 
   <h2 class="nhsuk-heading-s">If anything changes</h2>
 
