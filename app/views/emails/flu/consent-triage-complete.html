@@ -6,7 +6,7 @@
 {% block email %}
   <p>Dear {{ name }},</p>
 
-  <p>Thanks for answering the health questions about {{ childName }}. Our nurses have confirmed it’s safe for {{ childName.split(" ") | first }} to have the nasal flu vaccination.</p>
+  <p>Thanks for answering the health questions about {{ childName }}{{ knownAs }}. Our nurses have confirmed it’s safe for {{ childName.split(" ") | first }} to have the nasal flu vaccination.</p>
 
   <p>This will take place at {{ sessionSchool }} on {{ sessionDate | date("cccc d MMMM") }}. Please tell {{ childName.split(" ") | first }} that they’ll be vaccinated on this date.</p>
 
@@ -15,17 +15,4 @@
   <p>If {{ childName.split(" ") | first }}’s health changes, or you arrange to have the vaccination elsewhere, please get in touch. You can email example@nhs.uk or call 01234 321456.</p>
 
   <p>The child health team</p>
-
-
-
-
-
-
-
-
-
-
-
-
-
 {% endblock %}

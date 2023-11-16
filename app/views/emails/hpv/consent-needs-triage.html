@@ -6,7 +6,7 @@
 {% block email %}
   <p>Dear {{ name }},</p>
 
-  <p>You’ve said you agree to {{ childName }} having their HPV vaccination at {{ sessionSchool }} on {{ sessionDate | date("cccc d MMMM") }}.</p>
+  <p>You’ve said you agree to {{ childName }}{{ knownAs }} having their HPV vaccination at {{ sessionSchool }} on {{ sessionDate | date("cccc d MMMM") }}.</p>
 
   <p>As you answered ‘yes’ to some of the health questions, we need to check the vaccination is suitable for {{ childName.split(" ") | first }}. We’ll review your answers and get in touch again soon.</p>
 

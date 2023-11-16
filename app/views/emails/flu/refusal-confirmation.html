@@ -6,7 +6,7 @@
 {% block email %}
   <p>Dear {{ name }},</p>
 
-  <p>You’ve told us you do not want {{ childName }} to have their flu vaccination at {{ sessionSchool }} on {{ sessionDate | date("cccc d MMMM") }}. Please let {{ childName.split(" ") | first }} know they will not be vaccinated against flu in school.</p>
+  <p>You’ve told us you do not want {{ childName }}{{ knownAs }} to have their flu vaccination at {{ sessionSchool }} on {{ sessionDate | date("cccc d MMMM") }}. Please let {{ childName.split(" ") | first }} know they will not be vaccinated against flu in school.</p>
 
   <p>If you change your mind, please get in touch with us. You can email example@nhs.uk or call 01234 321456.</p>
 
