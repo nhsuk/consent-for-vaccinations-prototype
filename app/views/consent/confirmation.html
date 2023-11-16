@@ -6,7 +6,7 @@
 
 {% set title %}
   {% if vaccine == "HPV" %}
-    {{ childName }} will get their first HPV vaccination at school on {{ sessionDate | govukDate }}
+    {{ childName }} will get their HPV vaccination at school on {{ sessionDate | govukDate }}
   {% elseif vaccine == "DPT" %}
     {% if consentForBoth %}
       {{ childName }} will get their 3-in-1 teenage booster and MenACWY vaccinations at school on {{ sessionDate | govukDate }}
