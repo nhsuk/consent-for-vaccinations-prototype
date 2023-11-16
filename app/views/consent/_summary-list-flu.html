@@ -1,0 +1,55 @@
+{{ summaryList({
+  classes: "app-summary-list--full-width",
+  rows: decorateRows([
+    {
+      key: "Has your child been diagnosed with asthma?",
+      value: { html: healthAnswer("health.asthma") },
+      href: basePath + "consent/health-asthma?change=true"
+    },
+    {
+      key: "Has your child taken any oral steroids for their asthma in the last 2 weeks?",
+      value: { html: healthAnswer("health.asthma-steroids") },
+      href: basePath + "consent/health-asthma-steroids?change=true"
+    } if d("health.asthma") == "Yes",
+    {
+      key: "Has your child been admitted to intensive care for their asthma?",
+      value: { html: healthAnswer("health.asthma-admitted") },
+      href: basePath + "consent/health-asthma-admitted?change=true"
+    } if d("health.asthma") == "Yes",
+    {
+      key: "Has your child had a flu vaccination in the last 5 months?",
+      value: { html: healthAnswer("health.recent-flu-vaccination") },
+      href: basePath + "consent/health-recent-flu-vaccination?change=true"
+    },
+    {
+      key: "Does your child have a disease or treatment that severely affects their immune system?",
+      value: { html: healthAnswer("health.immune-system") },
+      href: basePath + "consent/health-immune-system?change=true"
+    },
+    {
+      key: "Is anyone in your household currently having treatment that severely affects their immune system?",
+      value: { html: healthAnswer("health.household-immune-system") },
+      href: basePath + "consent/health-immune-system?change=true"
+    },
+    {
+      key: "Has your child ever been admitted to intensive care due an allergic reaction to egg?",
+      value: { html: healthAnswer("health.egg-allergy") },
+      href: basePath + "consent/health-egg-allergy?change=true"
+    },
+    {
+      key: "Does your child have any allergies to medication?",
+      value: { html: healthAnswer("health.medication-allergies") },
+      href: basePath + "consent/health-medication-allergies?change=true"
+    },
+    {
+      key: "Has your child ever had a reaction to previous vaccinations?",
+      value: { html: healthAnswer("health.previous-reaction") },
+      href: basePath + "consent/health-previous-reaction?change=true"
+    },
+    {
+      key: "Does you child take regular aspirin?",
+      value: { html: healthAnswer("health.aspirin") },
+      href: basePath + "consent/health-aspirin?change=true"
+    }
+  ])
+}) }}

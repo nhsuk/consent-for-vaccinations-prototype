@@ -29,6 +29,16 @@ export default () => {
     return _.get(data, _.toPath(keyPath))
   }
 
+  globals.healthAnswer = function (keyPath) {
+    const data = this.ctx.data
+    const answer = _.get(data, _.toPath(keyPath)) || 'No'
+    const answerDetails = _.get(data, _.toPath(`${keyPath}-details`))
+
+    return (answer === 'Yes' && answerDetails)
+      ? `Yes – ${answerDetails}`
+      : answer
+  }
+
   const evaluateCondition = (data, condition) => {
     if (typeof condition === 'function' && condition()) {
       return true

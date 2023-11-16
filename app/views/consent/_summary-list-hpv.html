@@ -1,0 +1,25 @@
+{{ summaryList({
+  classes: "app-summary-list--full-width",
+  rows: decorateRows([
+    {
+      key: "Does your child have any severe allergies that have led to an anaphylactic reaction?",
+      value: { html: healthAnswer("health.allergy") },
+      href: basePath + "consent/health-allergy?change=true"
+    },
+    {
+      key: "Does your child have any existing medical conditions?",
+      value: { html: healthAnswer("health.existing-conditions") },
+      href: basePath + "consent/health-existing-conditions?change=true"
+    },
+    {
+      key: "Does your child take any regular medication?",
+      value: { html: healthAnswer("health.regular-medication") },
+      href: basePath + "consent/health-regular-medication?change=true"
+    },
+    {
+      key: "Is there anything else you think we should know?",
+      value: { html: healthAnswer("health.anything-else") },
+      href: basePath + "consent/health-anything-else?change=true"
+    }
+  ])
+}) }}

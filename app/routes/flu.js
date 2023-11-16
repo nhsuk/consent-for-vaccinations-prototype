@@ -7,7 +7,7 @@ export const fluRoutes = router => {
     '/flu/consent/:view'
   ], (req, res, next) => {
     res.locals.vaccine = 'flu'
-    res.locals.secondary = false
+    res.locals.sessionSchool = 'St Mary’s Primary School'
     res.locals.paths = fluWizard(req)
 
     // Change answer

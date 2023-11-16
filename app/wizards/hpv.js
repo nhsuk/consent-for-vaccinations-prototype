@@ -4,13 +4,27 @@ import { checkForContraindications } from './check-for-contraindications.js'
 export function hpvWizard (req) {
   const consented = req.session.data.consent !== 'No'
   const anyContraindications = checkForContraindications(req.session.data.health)
+  const noParentalResponsibility = req.session.data.parent?.relationship === 'Other' && req.session.data.parent['has-responsibility'] === 'No'
+  const haveTelephone = req.session.data.parent?.telephone !== ''
 
   const journey = {
     '/hpv/start': {},
     '/hpv/consent/child': {},
     '/hpv/consent/child-dob': {},
-    '/hpv/consent/school': {},
-    '/hpv/consent/parent-guardian': {},
+    '/hpv/consent/school': {
+      '/hpv/consent/school-not-in-pilot': {
+        data: 'child.school',
+        value: 'No, they go to a different school'
+      }
+    },
+    '/hpv/consent/parent-guardian': {
+      '/hpv/consent/no-parental-responsibility': noParentalResponsibility
+    },
+    ...haveTelephone
+      ? {
+          '/hpv/consent/telephone-contact-method': {}
+        }
+      : {},
     '/hpv/consent/consent': {
       '/hpv/consent/child-gp': consented
     },

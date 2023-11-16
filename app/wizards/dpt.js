@@ -5,13 +5,27 @@ export function dptWizard (req) {
   const data = req.session.data
   const noConsent = data['3-in-1-consent'] === 'No' && data['men-acwy-consent'] === 'No'
   const anyContraindications = checkForContraindications(data.health)
+  const noParentalResponsibility = req.session.data.parent?.relationship === 'Other' && req.session.data.parent['has-responsibility'] === 'No'
+  const haveTelephone = req.session.data.parent?.telephone !== ''
 
   const journey = {
     '/dpt/start': {},
     '/dpt/consent/child': {},
     '/dpt/consent/child-dob': {},
-    '/dpt/consent/school': {},
-    '/dpt/consent/parent-guardian': {},
+    '/dpt/consent/school': {
+      '/dpt/consent/school-not-in-pilot': {
+        data: 'child.school',
+        value: 'No, they go to a different school'
+      }
+    },
+    '/dpt/consent/parent-guardian': {
+      '/dpt/consent/no-parental-responsibility': noParentalResponsibility
+    },
+    ...haveTelephone
+      ? {
+          '/dpt/consent/telephone-contact-method': {}
+        }
+      : {},
     '/dpt/3-in-1-consent': {
       '/dpt/men-acwy-consent': {
         data: '3-in-1-consent',

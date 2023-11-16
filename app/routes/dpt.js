@@ -7,8 +7,14 @@ export const dptRoutes = router => {
     '/dpt/consent/:view'
   ], (req, res, next) => {
     res.locals.vaccine = 'DPT'
-    res.locals.secondary = true
+    res.locals.sessionSchool = 'Hele’s Secondary School'
     res.locals.paths = dptWizard(req)
+
+    // Change answer
+    if (req.query.change) {
+      res.locals.paths.next = '/dpt/consent/check-answers'
+    }
+
     next()
   })
 
