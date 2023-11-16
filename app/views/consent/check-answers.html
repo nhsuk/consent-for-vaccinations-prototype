@@ -3,44 +3,51 @@
 {% set buttonText = "Confirm" %}
 {% set basePath = "/" + (vaccine | lower) + "/" %}
 {% set consented = (data.consent and data.consent | arrayOrStringIncludes("Yes, I agree")) or not data.consent %}
+{% set gridClass = "nhsuk-grid-column-three-quarters" %}
 
 {% block form %}
   <h1 class="nhsuk-heading-l">{{ title }}</h1>
 
-  <h2 class="nhsuk-heading-m">Consent</h2>
+  {% set reasonHtml %}
+    <p>{{ d("no-consent-reason") }}</p>
+    {% if d("no-consent-reason-details") %}
+      <p>{{ d("no-consent-reason-details") }}</p>
+    {% endif %}
+  {% endset %}
 
-  <div class="nhsuk-card">
-    <div class="nhsuk-card__content">
-      {% set reasonHtml %}
-        <p>{{ d("no-consent-reason") }}</p>
-        {% if d("no-consent-reason-details") %}
-          <p>{{ d("no-consent-reason-details") }}</p>
-        {% endif %}
-      {% endset %}
-
-      {{ summaryList({
-        rows: decorateRows([
-          {
-            key: "Do you agree?",
-            data: "consent",
-            href: basePath + "consent/consent?change=true"
-          },
-          {
-            key: "Reason",
-            value: {
-              html: reasonHtml
-            },
-            href: basePath + "consent/no-consent-given?change=true"
-          } if not consented,
-          {
-            key: "Alternative option",
-            data: "im-consent",
-            href: basePath + "im-consent?change=true"
-          } if not consented and d("im-consent")
-        ])
-      }) }}
-    </div>
-  </div>
+  {{ card({
+    heading: "Consent",
+    headingClasses: "nhsuk-heading-m",
+    descriptionHtml: summaryList({
+      rows: decorateRows([
+        {
+          key: "Do you agree?",
+          data: "consent",
+          href: basePath + "consent/consent?change=true"
+        } if d("consent"),
+        {
+          key: "3-in-1",
+          data: "3-in-1-consent",
+          href: basePath + "dpt/3-in-1-consent?change=true"
+        } if d("3-in-1-consent"),
+        {
+          key: "MenACWY",
+          data: "men-acwy-consent",
+          href: basePath + "dpt/men-acwy-consent?change=true"
+        } if d("men-acwy-consent"),
+        {
+          key: "Reason",
+          value: { html: reasonHtml },
+          href: basePath + "consent/no-consent-given?change=true"
+        } if not consented,
+        {
+          key: "Alternative option",
+          data: "im-consent",
+          href: basePath + "im-consent?change=true"
+        } if not consented and d("im-consent")
+      ])
+    })
+  }) }}
 
   {% set addressHtml %}
     <p>
@@ -51,212 +58,111 @@
     </p>
   {% endset %}
 
-  <h2 class="nhsuk-heading-m">About your child</h2>
-  <div class="nhsuk-card">
-    <div class="nhsuk-card__content">
-      {{ summaryList({
-        rows: decorateRows([
-          {
-            key: "Child’s name",
-            value: childName,
-            href: basePath + "consent/child?change=true"
-          },
-          {
-            key: "Preferred first name",
-            data: "child.preferred-firstname",
-            href: basePath + "consent/child?change=true"
-          } if d("child.preferred-firstname"),
-          {
-            key: "Preferred last name",
-            data: "child.preferred-lastname",
-            href: basePath + "consent/child?change=true"
-          } if d("child.preferred-lastname"),
-          {
-            key: "Date of birth",
-            value: d("child.dob") | isoDateFromDateInput | govukDate,
-            href: basePath + "consent/child-dob?change=true"
-          } if d("child.dob"),
-          {
-            key: "Address",
-            value: {
-              html: addressHtml
-            },
-            href: basePath + "consent/address?change=true"
-          } if consented,
-          {
-            key: "School",
-            value: sessionSchool,
-            href: basePath + "consent/school?change=true"
-          },
-          {
-            key: "GP Surgery",
-            data: "child.gp",
-            href: basePath + "consent/child-gp?change=true"
-          } if consented and d("child.gp") and d("child.has-gp") == "yes",
-          {
-            key: "Registered with a GP",
-            value: d("child.has-gp") | capitaliseFirstLetter,
-            href: basePath + "consent/child-gp?change=true"
-          } if consented and d("child.has-gp") != "yes"
-        ])
-      }) }}
-    </div>
-  </div>
+  {{ card({
+    heading: "About your child",
+    headingClasses: "nhsuk-heading-m",
+    descriptionHtml: summaryList({
+      rows: decorateRows([
+        {
+          key: "Child’s name",
+          value: childName,
+          href: basePath + "consent/child?change=true"
+        },
+        {
+          key: {  html: "Preferred first name" | noOrphans },
+          data: "child.preferred-firstname",
+          href: basePath + "consent/child?change=true"
+        } if d("child.preferred-firstname"),
+        {
+          key: { html: "Preferred last name" | noOrphans },
+          data: "child.preferred-lastname",
+          href: basePath + "consent/child?change=true"
+        } if d("child.preferred-lastname"),
+        {
+          key: "Date of birth",
+          value: d("child.dob") | isoDateFromDateInput | govukDate,
+          href: basePath + "consent/child-dob?change=true"
+        } if d("child.dob"),
+        {
+          key: "Address",
+          value: { html: addressHtml },
+          href: basePath + "consent/address?change=true"
+        } if consented,
+        {
+          key: "School",
+          value: sessionSchool,
+          href: basePath + "consent/school?change=true"
+        },
+        {
+          key: "GP Surgery",
+          data: "child.gp",
+          href: basePath + "consent/child-gp?change=true"
+        } if consented and d("child.gp") and d("child.has-gp") == "yes",
+        {
+          key: { html: "Registered with a GP" | noOrphans },
+          value: d("child.has-gp") | capitaliseFirstLetter,
+          href: basePath + "consent/child-gp?change=true"
+        } if consented and d("child.has-gp") != "yes"
+      ])
+    })
+  }) }}
 
-  <h2 class="nhsuk-heading-m">About you</h2>
-  <div class="nhsuk-card">
-    <div class="nhsuk-card__content">
-      {{ summaryList({
-        rows: decorateRows([
-          {
-            key: "Your name",
-            data: "parent.name",
-            href: basePath + "consent/parent-guardian?change=true"
+  {{ card({
+    heading: "About you",
+    headingClasses: "nhsuk-heading-m",
+    descriptionHtml: summaryList({
+      rows: decorateRows([
+        {
+          key: "Your name",
+          data: "parent.name",
+          href: basePath + "consent/parent-guardian?change=true"
+        },
+        {
+          key: "Relationship",
+          data: "parent.relationship",
+          href: basePath + "consent/parent-guardian?change=true"
+        },
+        {
+          key: "Email address",
+          data: "parent.email",
+          href: basePath + "consent/parent-guardian?change=true"
+        },
+        {
+          key: "Phone number",
+          value: { text: d("parent.telephone") | default("Not provided", true) },
+          href: basePath + "consent/parent-guardian?change=true"
+        },
+        {
+          key: "Get updates by text message",
+          value: {
+            text: "Yes" if d("parent.sms") else "No"
           },
-          {
-            key: "Relationship",
-            data: "parent.relationship",
-            href: basePath + "consent/parent-guardian?change=true"
+          href: basePath + "consent/parent-guardian?change=true"
+        },
+        {
+          key: "Phone contact method",
+          value: {
+            text: d("parent.accessibility") + " – " + d("parent.accessibility-details") if d("parent.accessibility") == "Other" else d("parent.accessibility") | default("Not provided", true)
           },
-          {
-            key: "Email address",
-            data: "parent.email",
-            href: basePath + "consent/parent-guardian?change=true"
-          },
-          {
-            key: "Phone number",
-            value: {
-              text: data.parent.telephone | default("Not provided", true)
-            },
-            href: basePath + "consent/parent-guardian?change=true"
-          },
-          {
-            key: "Get updates by text message",
-            value: {
-              text: "Yes" if data.parent.sms else "No"
-            },
-            href: basePath + "consent/parent-guardian?change=true"
-          },
-          {
-            key: "Phone contact method",
-            value: {
-              text: d("parent.accessibility") + " – " + d("parent.accessibility-details") if d("parent.accessibility") == "Other" else data.parent.accessibility | default("Not provided", true)
-            },
-            href: basePath + "consent/telephone-contact-method?change=true"
-          } if data.parent.telephone
-        ])
-      }) }}
-    </div>
-  </div>
+          href: basePath + "consent/telephone-contact-method?change=true"
+        } if d("parent.telephone")
+      ])
+    })
+  }) }}
 
-  {% if consented %}
-  <h2 class="nhsuk-heading-m">Health questions</h2>
-  <div class="nhsuk-card">
-    <div class="nhsuk-card__content">
-      {{ summaryList({
-        classes: "app-summary-list--full-width",
-        rows: decorateRows([
-          {
-            key: "Has your child been diagnosed with asthma?",
-            value: {
-              html: d("health.asthma") if d("health.asthma") == "No" else d("health.asthma") + " – " + d("health.asthma-details")
-            },
-            href: basePath + "consent/health-asthma?change=true"
-          },
-          {
-            key: "Has your child taken any oral steroids for their asthma in the last 2 weeks?",
-            value: {
-              html: d("health.asthma-steroids") if d("health.asthma-steroids") == "No" else d("health.asthma-steroids") + " – " + d("health.asthma-steroids-details")
-            },
-            href: basePath + "consent/health-asthma-steroids?change=true"
-          } if d("health.asthma") == "Yes",
-          {
-            key: "Has your child been admitted to intensive care for their asthma?",
-            value: {
-              html: d("health.asthma-admitted") if d("health.asthma-admitted") == "No" else d("health.asthma-admitted") + " – " + d("health.asthma-admitted-details")
-            },
-            href: basePath + "consent/health-asthma-admitted?change=true"
-          } if d("health.asthma") == "Yes",
-          {
-            key: "Has your child had a flu vaccination in the last 5 months?",
-            value: {
-              html: d("health.recent-flu-vaccination") if d("health.recent-flu-vaccination") == "No" else d("health.recent-flu-vaccination") + " – " + d("health.recent-flu-vaccination-details")
-            },
-            href: basePath + "consent/health-recent-flu-vaccination?change=true"
-          } if vaccine == "flu",
-          {
-            key: "Does your child have a disease or treatment that severely affects their immune system?",
-            value: {
-              html: d("health.immune-system") if d("health.immune-system") == "No" else d("health.immune-system") + " – " + d("health.immune-system-details")
-            },
-            href: basePath + "consent/health-immune-system?change=true"
-          },
-          {
-            key: "Is anyone in your household currently having treatment that severely affects their immune system?",
-            value: {
-              html: d("health.household-immune-system") if d("health.household-immune-system") == "No" else d("health.household-immune-system") + " – " + d("health.household-immune-system-details")
-            },
-            href: basePath + "consent/health-immune-system?change=true"
-          },
-          {
-            key: "Has your child ever been admitted to intensive care due an allergic reaction to egg?",
-            value: {
-              html: d("health.egg-allergy") if d("health.egg-allergy") == "No" else d("health.egg-allergy") + " – " + d("health.egg-allergy-details")
-            },
-            href: basePath + "consent/health-egg-allergy?change=true"
-          },
-          {
-            key: "Does your child have any allergies to medication?",
-            value: {
-              html: d("health.medication-allergies") if d("health.medication-allergies") == "No" else d("health.medication-allergies") + " – " + d("health.medication-allergies-details")
-            },
-            href: basePath + "consent/health-medication-allergies?change=true"
-          },
-          {
-            key: "Has your child ever had a reaction to previous vaccinations?",
-            value: {
-              html: d("health.previous-reaction") if d("health.previous-reaction") == "No" else d("health.previous-reaction") + " – " + d("health.previous-reaction-details")
-            },
-            href: basePath + "consent/health-previous-reaction?change=true"
-          },
-                    {
-            key: "Does you child take regular aspirin?",
-            value: {
-              html: d("health.aspirin") if d("health.aspirin") == "No" else d("health.aspirin") + " – " + d("health.aspirin-details")
-            },
-            href: basePath + "consent/health-aspirin?change=true"
-          },
-          {
-            key: "Does your child have any severe allergies that have led to an anaphylactic reaction?",
-            value: {
-              html: d("health.allergy") if d("health.allergy") == "No" else d("health.allergy") + " – " + d("health.allergy-details")
-            },
-            href: basePath + "consent/health-allergy?change=true"
-          } if not vaccine == "flu",
-          {
-            key: "Does your child have any existing medical conditions?",
-            value: {
-              html: d("health.existing-conditions") if d("health.existing-conditions") == "No" else d("health.existing-conditions") + " – " + d("health.existing-conditions-details")
-            },
-            href: basePath + "consent/health-existing-conditions?change=true"
-          } if not vaccine == "flu",
-          {
-            key: "Does your child take any regular medication?",
-            value: {
-              html: d("health.regular-medication") if d("health.regular-medication") == "No" else d("health.regular-medication") + " – " + d("health.regular-medication-details")
-            },
-            href: basePath + "consent/health-regular-medication?change=true"
-          } if not vaccine == "flu",
-          {
-            key: "Is there anything else you think we should know?",
-            value: {
-              html: d("health.anything-else") if d("health.anything-else") == "No" else d("health.anything-else") + " – " + d("health.anything-else-details")
-            },
-            href: basePath + "consent/health-anything-else?change=true"
-          } if not vaccine == "flu"
-        ])
-      }) }}
-    </div>
-  </div>
-  {% endif %}
+  {% set descriptionHtml %}
+    {% if vaccine == "HPV" %}
+      {% include "consent/_summary-list-hpv.html" %}
+    {% elif vaccine == "DPT" %}
+      {% include "consent/_summary-list-dpt.html" %}
+    {% else %}
+      {% include "consent/_summary-list-flu.html" %}
+    {% endif %}
+  {% endset %}
+
+  {{ card({
+    heading: "Health questions",
+    headingClasses: "nhsuk-heading-m",
+    descriptionHtml: descriptionHtml
+  }) if consented }}
 {% endblock %}
