@@ -6,7 +6,7 @@
 {% block email %}
   <p>Dear {{ name }},</p>
 
-  <p>You’ve agreed for {{ childName }} to get the HPV vaccination at {{ sessionSchool }}. The first dose will be given on {{ sessionDate | date("cccc d MMMM") }}.</p>
+  <p>You’ve agreed for {{ childName }}{{ knownAs }} to get the HPV vaccination at {{ sessionSchool }} on {{ sessionDate | date("cccc d MMMM") }}.</p>
 
   <p>We’ll let you know when the vaccine has been given.</p>
 

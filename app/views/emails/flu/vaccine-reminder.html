@@ -6,7 +6,7 @@
 {% block email %}
   <p>Dear {{ name }},</p>
 
-  <p>This is a quick reminder that {{ childName }} will get their flu vaccination at {{ sessionSchool }} on {{ sessionDate | date("cccc d MMMM") }}.</p>
+  <p>This is a quick reminder that {{ childName }}{{ knownAs }} will get their flu vaccination at {{ sessionSchool }} on {{ sessionDate | date("cccc d MMMM") }}.</p>
 
   <p>If you haven’t already told {{ childName.split(" ") | first }} that they’ll be vaccinated on this date, please let them know what to expect.</p>
 

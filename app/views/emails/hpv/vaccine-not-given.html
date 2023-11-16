@@ -1,0 +1,13 @@
+{% extends "layouts/email.html" %}
+{% set subject = "Your child did not have their HPV vaccination today" %}
+{% set name = parent.name or "Jane Doe" %}
+{% set from = "School vaccinations <school.vaccinations@nhs.net>" %}
+{% set refusalReason = "they were absent from the session" %}
+
+{% block email %}
+  <p>Dear {{ name }},</p>
+
+  <p>{{ childName }}{{ knownAs }} did not get their HPV vaccination at {{ sessionSchool }} today. This was because {{ refusalReason}}.</p>
+
+  {% include "emails/_contact.html" %}
+{% endblock %}
