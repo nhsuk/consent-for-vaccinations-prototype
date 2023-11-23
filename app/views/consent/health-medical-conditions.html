@@ -1,5 +1,5 @@
 {% extends "layouts/wizard.html" %}
-{% set title = "Does your child have any existing medical conditions?" %}
+{% set title = "Does your child have any medical conditions for which they receive treatment?" %}
 
 {% block form %}
   {% set html %}
@@ -7,7 +7,7 @@
       label: {
         text: "Give details"
       },
-      decorate: "health.existing-conditions-details"
+      decorate: "health.medical-conditions-details"
     }) }}
   {% endset %}
 
@@ -28,6 +28,6 @@
       },
       { text: "No" }
     ],
-    decorate: "health.existing-conditions"
+    decorate: "health.medical-conditions"
   }) }}
 {% endblock %}

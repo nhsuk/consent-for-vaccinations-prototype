@@ -34,9 +34,8 @@ export function hpvWizard (req) {
     '/hpv/consent/child-gp': {},
     '/hpv/consent/address': {},
     '/hpv/consent/health-allergy': {},
-    '/hpv/consent/health-existing-conditions': {},
-    '/hpv/consent/health-regular-medication': {},
-    '/hpv/consent/health-anything-else': {},
+    '/hpv/consent/health-medical-conditions': {},
+    '/hpv/consent/health-previous-reaction': {},
     '/hpv/consent/check-answers': {
       '/hpv/consent/confirmation-no-consent': !consented,
       '/hpv/consent/confirmation-contraindications': anyContraindications

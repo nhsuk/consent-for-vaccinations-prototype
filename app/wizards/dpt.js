@@ -45,7 +45,7 @@ export function dptWizard (req) {
     '/dpt/consent/child-gp': {},
     '/dpt/consent/address': {},
     '/dpt/consent/health-allergy': {},
-    '/dpt/consent/health-existing-conditions': {},
+    '/dpt/consent/health-medical-conditions': {},
     '/dpt/consent/health-immunosuppressant-medication': {},
     '/dpt/consent/health-anything-else': {},
     '/dpt/consent/check-answers': {
