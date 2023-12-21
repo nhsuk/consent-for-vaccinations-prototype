@@ -7,6 +7,7 @@
  * existing application.
  */
 export default {
+  supportEmail: 'england.manage-childrens-vaccinations@nhs.net',
   // Set feature flags using the `features` key
   features: {
     validation: {

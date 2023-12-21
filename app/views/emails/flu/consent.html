@@ -1,6 +1,5 @@
 {% extends "layouts/email.html" %}
 {% set subject = "Flu vaccination on " + (sessionDate | date("d MMMM")) %}
-{% set from = "School vaccinations <school.vaccinations@nhs.net>" %}
 
 {% block email %}
   <p>Your local health team are coming to {{ sessionSchool }} on {{ sessionDate | date("cccc d MMMM") }} to give this year’s flu vaccine.</p>

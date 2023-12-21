@@ -1,7 +1,6 @@
 {% extends "layouts/email.html" %}
 {% set subject = "Your child got the HPV vaccine today" %}
 {% set name = parent.name or "Jane Doe" %}
-{% set from = "School vaccinations <school.vaccinations@nhs.net>" %}
 
 {% block email %}
   <p>Dear {{ name }},</p>

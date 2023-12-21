@@ -1,6 +1,5 @@
 {% extends "layouts/email.html" %}
 {% set subject = "Please respond to our request for consent by " + (deadlineDate | date("d MMMM")) %}
-{% set from = "School vaccinations <school.vaccinations@nhs.net>" %}
 
 {% block email %}
   <p>We wrote to you recently about a visit by a local health team to {{ sessionSchool }} on {{ sessionDate | date("cccc d MMMM") }}.</p>

@@ -1,6 +1,5 @@
 {% extends "layouts/email.html" %}
 {% set subject = "You can get an HPV vaccination on " + (sessionDate | date("d MMMM")) %}
-{% set from = "School vaccinations <school.vaccinations@nhs.net>" %}
 
 {% block email %}
   <p>A team of nurses are coming to your school on {{ sessionDate | govukDate }} to offer everyone in Year 8 a vaccine that protects you from something called the human papillomavirus. This is known as ‘HPV’ for short.</p>
@@ -56,5 +55,5 @@
 
   <h2 class="nhsuk-heading-m">You can talk to your local health team</h2>
 
-  <p>If you want to speak to someone from your local health team, you can call 01234 321456. You can also email example@nhs.uk.</p>
+  <p>If you want to speak to someone from your local health team, you can call 01234 321456. You can also email {{ data.supportEmail | urlize | safe }}.</p>
 {% endblock %}

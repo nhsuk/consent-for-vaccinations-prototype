@@ -1,7 +1,6 @@
 {% extends "layouts/email.html" %}
 {% set subject = "Flu vaccination on " + (sessionDate | date("d MMMM")) %}
 {% set name = parent.name or "Jane Doe" %}
-{% set from = "School vaccinations <school.vaccinations@nhs.net>" %}
 
 {% block email %}
   <p>Dear {{ name }},</p>
@@ -12,7 +11,7 @@
 
   <p>We’ll let you know once they’re vaccinated.</p>
 
-  <p>If {{ childName.split(" ") | first }}’s health changes, or you arrange to have the vaccination elsewhere, please get in touch. You can email example@nhs.uk or call 01234 321456.</p>
+  <p>If {{ childName.split(" ") | first }}’s health changes, or you arrange to have the vaccination elsewhere, please get in touch. You can email {{ data.supportEmail | urlize | safe }} or call 01234 321456.</p>
 
   <p>The child health team</p>
 {% endblock %}
