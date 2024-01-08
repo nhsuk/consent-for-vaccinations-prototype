@@ -22,6 +22,13 @@
     showNav: "false",
     showSearch: "false"
   }) }}
+  {{ govukPhaseBanner({
+    classes: "nhsuk-width-container",
+    tag: {
+      text: "Pilot"
+    },
+    text: "This is a pilot service."
+  }) | replace("govuk-tag", "nhsuk-tag") }}
 {% endblock %}
 
 {% block footer %}
