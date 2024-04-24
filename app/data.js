@@ -1,3 +1,5 @@
+import messages from './texts.js'
+
 /**
  * Default values for user session data
  *
@@ -8,6 +10,7 @@
  */
 export default {
   supportEmail: 'england.manage-childrens-vaccinations@nhs.net',
+  messages,
   // Set feature flags using the `features` key
   features: {
     validation: {

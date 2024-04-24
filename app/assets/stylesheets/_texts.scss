@@ -1,0 +1,46 @@
+$background-color: $color_nhsuk-white;
+$message-color: mix($color_nhsuk-grey-4, $color_nhsuk-white, 50%);
+
+html:has(.app-texts),
+.app-texts {
+  background-color: $background-color;
+}
+
+.app-texts__message {
+  @include nhsuk-responsive-margin(7, "bottom");
+
+  background-color: $message-color;
+  border-radius: nhsuk-spacing(3);
+  padding: nhsuk-spacing(3);
+  position: relative;
+  max-width: 360px;
+
+  &::before {
+    background: $message-color;
+    border-bottom-right-radius: nhsuk-spacing(3);
+    bottom: 0;
+    content: "";
+    left: #{nhsuk-spacing(2) * -1};
+    height: nhsuk-spacing(3);
+    position: absolute;
+    width: nhsuk-spacing(4);
+    z-index: 0;
+  }
+
+  &::after {
+    background: $background-color;
+    border-bottom-right-radius: nhsuk-spacing(2);
+    bottom: 0;
+    content: "";
+    height: nhsuk-spacing(3);
+    left: #{nhsuk-spacing(2) * -1};
+    position: absolute;
+    width: nhsuk-spacing(2);
+    z-index: 1;
+  }
+
+  p {
+    font-family: system-ui, sans-serif;
+    margin: 0;
+  }
+}
