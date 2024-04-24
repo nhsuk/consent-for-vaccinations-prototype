@@ -16,6 +16,7 @@ $govuk-border-colour: #d8dde0;
 // Add extra styles here, or re-organise the Sass files in whichever way makes most sense to you
 @import "unbranded";
 @import "email";
+@import "texts";
 
 .app-panel h1 {
   @include nhsuk-font(32, $weight: bold);
